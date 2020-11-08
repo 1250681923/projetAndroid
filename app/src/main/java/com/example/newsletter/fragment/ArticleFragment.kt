@@ -36,21 +36,22 @@ class ArticleFragment : Fragment() {
                         DividerItemDecoration.VERTICAL
                 )
         )
+
         return view
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 //        val articles = getArticles()
-//        val adapter = ListArticlesAdapter(articles)
-//        recyclerView.adapter = adapter
+//        bindData(articles)
     }
+
     /**
      * Récupère la liste des articles dans un thread secondaire
      */
     private fun getArticles() {
         lifecycleScope.launch(Dispatchers.IO) {
             val articles = ArticleRepository.getInstance().getArticles()
+
         }
     }
 
@@ -61,8 +62,10 @@ class ArticleFragment : Fragment() {
      */
     private fun bindData(articles: List<Article>) {
         lifecycleScope.launch(Dispatchers.Main) {
-            //créer l'adapter
+            getArticles()
+            val adapter = ListArticlesAdapter(articles)
             //associer l'adapteur au recyclerview
+            recyclerView.adapter = adapter
         }
     }
 }
