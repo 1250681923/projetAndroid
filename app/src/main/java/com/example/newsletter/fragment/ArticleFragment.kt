@@ -19,6 +19,7 @@ import kotlinx.coroutines.launch
 class ArticleFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
+
     /**
      * Fonction permettant de définir une vue à attacher à un fragment
      */
@@ -39,11 +40,19 @@ class ArticleFragment : Fragment() {
 
         return view
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        val articles = getArticles()
-//        bindData(articles)
+        lifecycleScope.launch(Dispatchers.Main) {
+            lifecycleScope.launch(Dispatchers.IO) {
+                val articles = ArticleRepository.getInstance().getArticles()
+                val adapter = ListArticlesAdapter(articles)
+                recyclerView.adapter = adapter
+            }
+
+        }
     }
+
 
     /**
      * Récupère la liste des articles dans un thread secondaire
@@ -60,11 +69,10 @@ class ArticleFragment : Fragment() {
      * Cette action doit s'effectuer sur le thread principale
      * Car on ne peut mas modifier les éléments de vue dans un thread secondaire
      */
-    private fun bindData(articles: List<Article>) {
+    private fun bindData(articles: List<Article> ) {
         lifecycleScope.launch(Dispatchers.Main) {
-            getArticles()
+
             val adapter = ListArticlesAdapter(articles)
-            //associer l'adapteur au recyclerview
             recyclerView.adapter = adapter
         }
     }

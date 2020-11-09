@@ -5,9 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsletter.R
+import com.example.newsletter.data.ArticleRepository
 import com.example.newsletter.models.Article
+import kotlinx.coroutines.Dispatchers
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 
 class ListArticlesAdapter(
         items: List<Article>
@@ -23,7 +28,9 @@ class ListArticlesAdapter(
         val article: Article = mArticle[position]
         // Display Neighbour Name
         holder.title.text = article.title
+        holder.description.text = article.description
     }
+
 
     override fun getItemCount(): Int {
         return mArticle.size

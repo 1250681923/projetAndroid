@@ -72,7 +72,7 @@ class ArticleOnlineService : ArticleService {
 //        private const val apiKey = "YOUR_API_KEY"
 //        private const val apiUrl = "THE_API_URL"
         private const val apiKey = "1212de7128114b7cbb36a95764946f10"
-        private const val apiUrl = "http://newsapi.org/v2/top-headlines/"
+        private const val apiUrl = "https://newsapi.org/"
     }
 
 }
