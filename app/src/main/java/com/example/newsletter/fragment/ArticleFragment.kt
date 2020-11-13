@@ -44,10 +44,7 @@ class ArticleFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        lifecycleScope.launch(Dispatchers.IO) {
-            val articles = ArticleRepository.getInstance().getArticles()
-            bindData(articles)
-        }
+        getArticles()
     }
 
 
@@ -56,8 +53,8 @@ class ArticleFragment : Fragment(){
      */
     private fun getArticles(){
         lifecycleScope.launch(Dispatchers.IO) {
-            val articles = ArticleRepository.getInstance().getArticles()
-
+            val articles = ArticleRepository.getInstance().getArticles("bitcoin")
+            bindData(articles.articles)
         }
     }
 
