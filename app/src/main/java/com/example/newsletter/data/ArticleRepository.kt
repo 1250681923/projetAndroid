@@ -1,7 +1,6 @@
 package com.example.newsletter.data
 
 import com.example.newsletter.data.service.ArticleOnlineService
-import com.example.newsletter.data.service.ArticleService
 import com.example.newsletter.models.Article
 
 class ArticleRepository {

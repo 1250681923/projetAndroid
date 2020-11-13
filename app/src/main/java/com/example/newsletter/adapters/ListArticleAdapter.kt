@@ -5,13 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsletter.R
-import com.example.newsletter.data.ArticleRepository
 import com.example.newsletter.models.Article
-import kotlinx.coroutines.Dispatchers
-import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 class ListArticlesAdapter(
