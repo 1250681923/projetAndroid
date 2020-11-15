@@ -12,6 +12,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ArticleOnlineService : ArticleService {
     private val service: RetrofitApiService
 
+
+
     init {
         val retrofit = buildClient()
         //Init the api service with retrofit
@@ -71,6 +73,9 @@ class ArticleOnlineService : ArticleService {
 
     override fun getArticlesByCountry(country: String): ArticleResponse {
         return service.list(country).execute().body()!!
+    }
+    override fun getArticlesByCategory( category: String): ArticleResponse {
+        return service.listByCategory(category).execute().body()!!
     }
 
     companion object {
