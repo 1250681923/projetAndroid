@@ -6,41 +6,53 @@
         style="@style/Widget.Shrine.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Politics" />
+        android:layout_marginTop="20dp"
+        android:text="Politics"
+        android:textSize="16sp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/business"
         style="@style/Widget.Shrine.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Business" />
+        android:layout_marginTop="20dp"
+        android:text="Business"
+        android:textSize="16sp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/entertainment"
         style="@style/Widget.Shrine.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Entertainment" />
+        android:layout_marginTop="20dp"
+        android:text="Entertainment"
+        android:textSize="16sp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/general"
         style="@style/Widget.Shrine.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="General" />
+        android:layout_marginTop="20dp"
+        android:text="General"
+        android:textSize="16sp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/health"
         style="@style/Widget.Shrine.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Health" />
+        android:layout_marginTop="20dp"
+        android:text="Health"
+        android:textSize="16sp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/science"
         style="@style/Widget.Shrine.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Science" />
+        android:layout_marginTop="20dp"
+        android:text="Science"
+        android:textSize="16sp"/>
 
 </merge>
