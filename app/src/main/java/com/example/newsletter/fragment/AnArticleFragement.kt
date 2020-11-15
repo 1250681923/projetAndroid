@@ -17,7 +17,7 @@ import com.example.newsletter.models.Article
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ArticleFragment : Fragment(){
+class AnArticleFragement : Fragment(){
 
     private lateinit var recyclerView: RecyclerView
 
@@ -53,7 +53,7 @@ class ArticleFragment : Fragment(){
      */
     private fun getArticles(){
         lifecycleScope.launch(Dispatchers.IO) {
-            val articles = ArticleRepository.getInstance().getArticles("bitcoin")
+            val articles = ArticleRepository.getInstance().getArticlesByCountry("gb")
             bindData(articles.articles)
         }
     }
