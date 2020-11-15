@@ -45,6 +45,7 @@ class ArticleFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getArticles()
+
     }
 
 
@@ -63,11 +64,13 @@ class ArticleFragment : Fragment(){
      * Cette action doit s'effectuer sur le thread principale
      * Car on ne peut mas modifier les éléments de vue dans un thread secondaire
      */
-    private fun bindData(articles: List<Article> ) {
+    private fun bindData(articles: List<Article>){
+        val adapter = ListArticlesAdapter(articles)
         lifecycleScope.launch(Dispatchers.Main) {
-            val adapter = ListArticlesAdapter(articles)
+
             recyclerView.adapter = adapter
         }
     }
+
 }
 

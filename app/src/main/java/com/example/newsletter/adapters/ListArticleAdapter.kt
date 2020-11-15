@@ -6,13 +6,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.newsletter.R
 import com.example.newsletter.models.Article
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 
 class ListArticlesAdapter(
-        items: List<Article>
+    items: List<Article>
 ) : RecyclerView.Adapter<ListArticlesAdapter.ViewHolder>() {
     private val mArticle: List<Article> = items
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -26,6 +27,20 @@ class ListArticlesAdapter(
         // Display Neighbour Name
         holder.title.text = article.title
         holder.description.text = article.description
+
+        val context = holder.itemView
+        // val context : Context = holder.mNeighbourAvatar.context
+        // Display Neighbour Avatar
+        Glide.with(context)
+                .load(article.urlToImage)
+                .apply(RequestOptions.circleCropTransform())
+                .placeholder(R.drawable.ic_launcher_background)
+                .error(R.drawable.ic_launcher_background)
+                .skipMemoryCache(false)
+                .into(holder.image)
+
+
+
     }
 
 
