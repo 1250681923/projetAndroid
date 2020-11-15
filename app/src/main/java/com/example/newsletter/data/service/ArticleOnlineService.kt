@@ -69,6 +69,10 @@ class ArticleOnlineService : ArticleService {
         return service.list(q).execute().body()!!
     }
 
+    override fun getArticlesByCountry(country: String): ArticleResponse {
+        return service.list(country).execute().body()!!
+    }
+
     companion object {
 //        private const val apiKey = "YOUR_API_KEY"
 //        private const val apiUrl = "THE_API_URL"
