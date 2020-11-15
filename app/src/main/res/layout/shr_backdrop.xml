@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/politics"
+        style="@style/Widget.Shrine.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Politics" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/business"
+        style="@style/Widget.Shrine.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Business" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/entertainment"
+        style="@style/Widget.Shrine.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Entertainment" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/general"
+        style="@style/Widget.Shrine.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="General" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/health"
+        style="@style/Widget.Shrine.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Health" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/science"
+        style="@style/Widget.Shrine.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Science" />
+
+</merge>
