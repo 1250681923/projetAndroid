@@ -51,6 +51,7 @@ class PageAccueilFragment: Fragment(), RadioGroup.OnCheckedChangeListener {
         button.setOnClickListener {
             (activity as? NavigationListener)?.let {
                 if (Fr.isChecked)   it.showFragment(FrArticleFragment())
+//                if (Fr.isChecked)   it.showFragment(ArticleFragment())
                 if (Ch.isChecked)   it.showFragment(ChArticleFragment())
                 if (Et.isChecked)   it.showFragment(EtArticleFragment())
                 if (An.isChecked)   it.showFragment(AnArticleFragement())
