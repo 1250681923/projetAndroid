@@ -11,11 +11,11 @@ class MainActivity : AppCompatActivity(), NavigationListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        showFragment(PageAccueilFragment())
+        changeFragment(PageAccueilFragment())
     }
 
 
-    override fun showFragment(fragment: Fragment) {
+    override fun changeFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fragment_container, fragment)
             addToBackStack(null)

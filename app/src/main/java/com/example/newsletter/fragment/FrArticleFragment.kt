@@ -2,6 +2,7 @@ package com.example.newsletter.fragment
 
 import android.os.Build
 import android.os.Bundle
+import android.text.TextUtils.replace
 import android.view.*
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Button
@@ -12,7 +13,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.newsletter.MainActivity
 import com.example.newsletter.NavigationIconClickListener
+import com.example.newsletter.NavigationListener
 import com.example.newsletter.R
 import com.example.newsletter.adapters.ListArticlesAdapter
 import com.example.newsletter.adapters.ListArticlesHandler
@@ -97,17 +100,59 @@ class FrArticleFragment : Fragment(){
         science.setOnClickListener {
             getArticlesByCategory("science")
         }
-
-
-
-
-
     }
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
         menuInflater.inflate(R.menu.shr_toolbar_menu, menu)
         super.onCreateOptionsMenu(menu, menuInflater)
     }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle action bar item clicks here.
+        val id = item.getItemId()
 
+        if (id == R.id.page_1) {
+            (activity as? NavigationListener)?.let {
+                it.changeFragment(PageAccueilFragment())
+            }
+            return true
+        }
+
+        if (id == R.id.page_2) {
+            (activity as? NavigationListener)?.let {
+                it.changeFragment(PageAccueilFragment())
+            }
+            return true
+        }
+
+        //developpeur
+        if (id == R.id.page_3) {
+            (activity as? NavigationListener)?.let {
+                it.changeFragment(DeveloppeurFragment())
+            }
+            return true
+        }
+        //Fonction
+        if (id == R.id.page_4) {
+            (activity as? NavigationListener)?.let {
+                it.changeFragment(PageAccueilFragment())
+            }
+            return true
+        }
+        //library
+        if (id == R.id.page_5) {
+            (activity as? NavigationListener)?.let {
+                it.changeFragment(PageAccueilFragment())
+            }
+            return true
+        }
+
+
+
+
+
+
+
+        return super.onOptionsItemSelected(item)
+    }
     /**
      * Récupère la liste des articles dans un thread secondaire
      */
@@ -120,7 +165,7 @@ class FrArticleFragment : Fragment(){
 
     private fun getArticlesByCategory(category:String){
         lifecycleScope.launch(Dispatchers.IO) {
-            val articles = ArticleRepository.getInstance().getArticlesByCategory(category)
+            val articles = ArticleRepository.getInstance().getArticlesByCategory("fr",category)
             bindData(articles.articles)
         }
     }
@@ -130,12 +175,12 @@ class FrArticleFragment : Fragment(){
      * Car on ne peut mas modifier les éléments de vue dans un thread secondaire
      */
     private fun bindData(articles: List<Article>){
-
         lifecycleScope.launch(Dispatchers.Main) {
             val adapter = ListArticlesAdapter(articles)
             recyclerView.adapter = adapter
         }
     }
+
 
 }
 

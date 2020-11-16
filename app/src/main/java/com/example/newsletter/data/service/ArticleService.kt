@@ -6,5 +6,5 @@ import com.example.newsletter.models.ArticleResponse
 interface ArticleService {
     fun getArticles(q:String): ArticleResponse
     fun getArticlesByCountry(country: String): ArticleResponse
-    fun getArticlesByCategory(category: String): ArticleResponse
+    fun getArticlesByCategory(country: String, category: String): ArticleResponse
 }

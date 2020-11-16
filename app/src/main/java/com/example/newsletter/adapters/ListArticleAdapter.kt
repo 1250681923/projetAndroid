@@ -26,7 +26,7 @@ class ListArticlesAdapter(
         val article: Article = mArticle[position]
         // Display Neighbour Name
         holder.title.text = article.title
-        holder.description.text = article.description
+        holder.content.text = article.content
 
         val context = holder.itemView
         // val context : Context = holder.mNeighbourAvatar.context
@@ -39,8 +39,6 @@ class ListArticlesAdapter(
                 .skipMemoryCache(false)
                 .into(holder.image)
 
-
-
     }
 
 
@@ -51,11 +49,11 @@ class ListArticlesAdapter(
     class ViewHolder(view: View) :
             RecyclerView.ViewHolder(view) {
             val title: TextView
-            val description: TextView
+            val content: TextView
             val image: ImageView
         init {
             title = view.findViewById(R.id.title)
-            description = view.findViewById(R.id.description)
+            content = view.findViewById(R.id.content)
             image = view.findViewById(R.id.image)
         }
     }
