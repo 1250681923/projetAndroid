@@ -16,6 +16,6 @@ interface RetrofitApiService {
     fun list(@Query("country") country: String): Call<ArticleResponse>
 
     @GET("top-headlines")
-    fun listByCategory(@Query("category") category: String): Call<ArticleResponse>
+    fun listByCategory(@Query("country") country: String, @Query("category") category: String ): Call<ArticleResponse>
 
 }

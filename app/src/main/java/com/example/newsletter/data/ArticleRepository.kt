@@ -9,7 +9,7 @@ class ArticleRepository {
 
     fun getArticles(q:String): ArticleResponse = apiService.getArticles(q)
     fun getArticlesByCountry(country:String): ArticleResponse = apiService.getArticlesByCountry(country)
-    fun getArticlesByCategory(category: String) = apiService.getArticlesByCategory(category)
+    fun getArticlesByCategory(country: String, category: String) = apiService.getArticlesByCategory(country, category)
     companion object {
         private var instance: ArticleRepository? = null
         fun getInstance(): ArticleRepository {

@@ -81,6 +81,24 @@ class ChArticleFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
         getArticles()
         setHasOptionsMenu(true)
+        politics.setOnClickListener {
+            getArticlesByCategory("politics")
+        }
+        business.setOnClickListener {
+            getArticlesByCategory("business")
+        }
+        entertainment.setOnClickListener {
+            getArticlesByCategory("entertainment")
+        }
+        general.setOnClickListener {
+            getArticlesByCategory("general")
+        }
+        health.setOnClickListener {
+            getArticlesByCategory("health")
+        }
+        science.setOnClickListener {
+            getArticlesByCategory("science")
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -94,6 +112,12 @@ class ChArticleFragment : Fragment(){
     private fun getArticles(){
         lifecycleScope.launch(Dispatchers.IO) {
             val articles = ArticleRepository.getInstance().getArticlesByCountry("cn")
+            bindData(articles.articles)
+        }
+    }
+    private fun getArticlesByCategory(category:String){
+        lifecycleScope.launch(Dispatchers.IO) {
+            val articles = ArticleRepository.getInstance().getArticlesByCategory("cn",category)
             bindData(articles.articles)
         }
     }

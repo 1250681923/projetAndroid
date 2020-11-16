@@ -80,6 +80,24 @@ class EtArticleFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
         getArticles()
         setHasOptionsMenu(true)
+        politics.setOnClickListener {
+            getArticlesByCategory("politics")
+        }
+        business.setOnClickListener {
+            getArticlesByCategory("business")
+        }
+        entertainment.setOnClickListener {
+            getArticlesByCategory("entertainment")
+        }
+        general.setOnClickListener {
+            getArticlesByCategory("general")
+        }
+        health.setOnClickListener {
+            getArticlesByCategory("health")
+        }
+        science.setOnClickListener {
+            getArticlesByCategory("science")
+        }
     }
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
         menuInflater.inflate(R.menu.shr_toolbar_menu, menu)
@@ -97,6 +115,12 @@ class EtArticleFragment : Fragment(){
         }
     }
 
+    private fun getArticlesByCategory(category:String){
+        lifecycleScope.launch(Dispatchers.IO) {
+            val articles = ArticleRepository.getInstance().getArticlesByCategory("us",category)
+            bindData(articles.articles)
+        }
+    }
     /**
      * Rempli le recyclerview avec les données récupérées dans le web service
      * Cette action doit s'effectuer sur le thread principale
