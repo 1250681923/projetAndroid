@@ -1,6 +1,7 @@
 package com.example.newsletter.fragment
 
 import android.app.Activity
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.*
@@ -26,7 +27,7 @@ import kotlinx.android.synthetic.main.list_articles_fragment.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class FrArticleFragment: Fragment(){
+class FrArticleFragment: Fragment(), ListArticlesHandler{
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var politics: Button
@@ -181,7 +182,7 @@ class FrArticleFragment: Fragment(){
      * Car on ne peut mas modifier les éléments de vue dans un thread secondaire
      */
     private fun bindData(articles: List<Article>){
-        val adapter = ListArticlesAdapter(articles)
+        val adapter = ListArticlesAdapter(articles,this)
         lifecycleScope.launch(Dispatchers.Main) {
             recyclerView.adapter = adapter
         }
@@ -189,5 +190,18 @@ class FrArticleFragment: Fragment(){
 
 
 
+
+
+    override fun onFavoritsArticle(article: Article) {
+       FavoritsDatabase.getInstance(requireContext()).FavoritsApiService().insertArticle(article)
+    }
+
+    override fun onRemoveFavArticle(id: Int) {
+        FavoritsDatabase.getInstance(requireContext()).FavoritsApiService().deleteArticle(id)
+    }
+
+    override fun getListArticlesFav(): MutableList<Article> {
+        return FavoritsDatabase.getInstance(requireContext()).FavoritsApiService().getArticle()
+    }
 }
 

@@ -26,17 +26,5 @@ class MainActivity : AppCompatActivity(), NavigationListener{
     }
 
 
-//    fun onFavoritsArticle(article: Article) {
-//        FavoritsDatabase.getInstance(this).FavoritsApiService().insertArticle(article)
-//    }
-//
-//    fun onRemoveFavArticle(article: Article) {
-//        FavoritsDatabase.getInstance(this).FavoritsApiService().deleteArticle(article)
-//    }
-//
-//    fun getListArticlesFav(): List<Article> {
-//        return FavoritsDatabase.getInstance(this).FavoritsApiService().getArticle()
-//    }
-
 
 }

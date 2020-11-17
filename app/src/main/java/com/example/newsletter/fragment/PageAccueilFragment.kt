@@ -13,9 +13,11 @@ import androidx.fragment.app.Fragment
 import com.example.newsletter.MainActivity
 import com.example.newsletter.NavigationListener
 import com.example.newsletter.R
+import com.example.newsletter.adapters.ListArticlesHandler
+import com.example.newsletter.models.Article
 
 
-class PageAccueilFragment : Fragment(), RadioGroup.OnCheckedChangeListener {
+class PageAccueilFragment : Fragment(), RadioGroup.OnCheckedChangeListener{
     private lateinit var button: Button
     private lateinit var li: RadioGroup
     private lateinit var Fr: RadioButton
@@ -51,7 +53,7 @@ class PageAccueilFragment : Fragment(), RadioGroup.OnCheckedChangeListener {
 
         button.setOnClickListener {
             (activity as? NavigationListener)?.let {
-                if (Fr.isChecked)   it.changeFragment(FrArticleFragment())
+                if (Fr.isChecked)   it.changeFragment(FrArticleFragment( ))
                 if (Ch.isChecked)   it.changeFragment(ChArticleFragment())
                 if (Et.isChecked)   it.changeFragment(EtArticleFragment())
                 if (An.isChecked)   it.changeFragment(AnArticleFragement())
@@ -63,6 +65,7 @@ class PageAccueilFragment : Fragment(), RadioGroup.OnCheckedChangeListener {
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
         button.isEnabled = Fr.isChecked || Ch.isChecked|| Et.isChecked|| An.isChecked
     }
+
 
 }
 

@@ -6,6 +6,7 @@ import java.io.FileDescriptor
 @Entity(tableName = "articles")
 data class Article (
         @PrimaryKey
+        var id: Int,
         val author: String,
         val title: String,
         val description: String,

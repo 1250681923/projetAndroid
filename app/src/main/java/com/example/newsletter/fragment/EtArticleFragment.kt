@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.list_articles_fragment.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class EtArticleFragment: Fragment(){
+class EtArticleFragment: Fragment(), ListArticlesHandler{
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var politics: Button
@@ -128,11 +128,23 @@ class EtArticleFragment: Fragment(){
      * Car on ne peut mas modifier les éléments de vue dans un thread secondaire
      */
     private fun bindData(articles: List<Article>){
-        val adapter = ListArticlesAdapter(articles)
+        val adapter = ListArticlesAdapter(articles, this)
         lifecycleScope.launch(Dispatchers.Main) {
 
             recyclerView.adapter = adapter
         }
+    }
+
+    override fun onFavoritsArticle(article: Article) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onRemoveFavArticle(id: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getListArticlesFav(): List<Article> {
+        TODO("Not yet implemented")
     }
 
 }

@@ -18,9 +18,11 @@ import kotlinx.coroutines.CoroutineScope
 
 //val root: MainActivity
 class ListArticlesAdapter(
-    items: List<Article>
+    items: List<Article>,
+    val handler: ListArticlesHandler
 ) : RecyclerView.Adapter<ListArticlesAdapter.ViewHolder>() {
     private val mArticle: List<Article> = items
+    private var a: Int = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(parent.context)
@@ -56,13 +58,15 @@ class ListArticlesAdapter(
         holder.favorits.setOnClickListener{
             if (isArticleFav(article)){
                 holder.favorits.setBackgroundResource(R.drawable.ic_favorite_border_24)
-               // root.onRemoveFavArticle(article)
-               // Toast.makeText(root,"retiré des favoris", Toast.LENGTH_SHORT).show()
+                handler.onRemoveFavArticle(article.id)
+                //Toast.makeText(handler,"retiré des favoris", Toast.LENGTH_SHORT).show()
             }
             else {
                 holder.favorits.setBackgroundResource(R.drawable.ic_favorite_round_24)
-                //root.onFavoritsArticle(article)
-               // Toast.makeText(root,"ajouté aux favoris", Toast.LENGTH_SHORT).show()
+                a++
+                article.id = a
+                handler.onFavoritsArticle(article)
+                //Toast.makeText(handler,"ajouté aux favoris", Toast.LENGTH_SHORT).show()
             }
             println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ${it}")
         }
@@ -70,10 +74,10 @@ class ListArticlesAdapter(
     }
 
     fun isArticleFav(article: Article):Boolean{
-//        for (item: Article in root.getListArticlesFav()){
-//            if (item.url == article.url) return true
-//
-//        }
+        for (item: Article in handler.getListArticlesFav()){
+            if (item.url == article.url) return true
+
+        }
         return false
 
     }
