@@ -9,7 +9,7 @@ import com.example.newsletter.fragment.ArticleFragment
 import com.example.newsletter.fragment.PageAccueilFragment
 import com.example.newsletter.models.Article
 
-class MainActivity : AppCompatActivity(), NavigationListener {
+class MainActivity : AppCompatActivity(), NavigationListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -26,6 +26,17 @@ class MainActivity : AppCompatActivity(), NavigationListener {
     }
 
 
+//    fun onFavoritsArticle(article: Article) {
+//        FavoritsDatabase.getInstance(this).FavoritsApiService().insertArticle(article)
+//    }
+//
+//    fun onRemoveFavArticle(article: Article) {
+//        FavoritsDatabase.getInstance(this).FavoritsApiService().deleteArticle(article)
+//    }
+//
+//    fun getListArticlesFav(): List<Article> {
+//        return FavoritsDatabase.getInstance(this).FavoritsApiService().getArticle()
+//    }
 
 
 }

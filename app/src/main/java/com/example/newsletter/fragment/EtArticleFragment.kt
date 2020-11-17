@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.newsletter.MainActivity
 import com.example.newsletter.NavigationIconClickListener
 import com.example.newsletter.R
 import com.example.newsletter.adapters.ListArticlesAdapter
@@ -22,7 +23,7 @@ import kotlinx.android.synthetic.main.list_articles_fragment.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class EtArticleFragment : Fragment(){
+class EtArticleFragment: Fragment(){
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var politics: Button

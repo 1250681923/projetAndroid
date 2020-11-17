@@ -1,8 +1,11 @@
 package com.example.newsletter.models
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.io.FileDescriptor
-@Entity(tableName = "articles") data class Article (
+@Entity(tableName = "articles")
+data class Article (
+        @PrimaryKey
         val author: String,
         val title: String,
         val description: String,

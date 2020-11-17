@@ -1,5 +1,6 @@
 package com.example.newsletter.fragment
 
+import android.app.Activity
 import android.os.Build
 import android.os.Bundle
 import android.view.*
@@ -25,7 +26,7 @@ import kotlinx.android.synthetic.main.list_articles_fragment.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class FrArticleFragment : Fragment(), ListArticlesHandler{
+class FrArticleFragment: Fragment(){
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var politics: Button
@@ -36,7 +37,7 @@ class FrArticleFragment : Fragment(), ListArticlesHandler{
     private lateinit var science: Button
 
 
-    private lateinit var favorits: Button
+    
     /**
      * Fonction permettant de définir une vue à attacher à un fragment
      */
@@ -54,7 +55,7 @@ class FrArticleFragment : Fragment(), ListArticlesHandler{
         health = view.findViewById(R.id.health)
         science = view.findViewById(R.id.science)
 
-        favorits = view.findViewById(R.id.btn_favories)
+
 
         // Set up the toolbar.
         (activity as AppCompatActivity).setSupportActionBar(view.app_bar)
@@ -180,23 +181,12 @@ class FrArticleFragment : Fragment(), ListArticlesHandler{
      * Car on ne peut mas modifier les éléments de vue dans un thread secondaire
      */
     private fun bindData(articles: List<Article>){
-        val adapter = ListArticlesAdapter(articles , this)
+        val adapter = ListArticlesAdapter(articles)
         lifecycleScope.launch(Dispatchers.Main) {
             recyclerView.adapter = adapter
         }
     }
 
-    override fun onFavoritsArticle(article: Article) {
-        FavoritsDatabase.getInstance(this).FavoritsApiService().insertArticle(article)
-    }
-
-    override fun onRemoveFavArticle(article: Article) {
-        FavoritsDatabase.getInstance(this).FavoritsApiService().deleteArticle(article)
-    }
-
-    override fun getListArticlesFav(): List<Article> {
-        return FavoritsDatabase.getInstance(this).FavoritsApiService().getArticle()
-    }
 
 
 }
