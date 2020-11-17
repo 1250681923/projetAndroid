@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.newsletter.MainActivity
 import com.example.newsletter.R
 import com.example.newsletter.data.FavoritsDatabase
 import com.example.newsletter.models.Article
@@ -46,13 +48,32 @@ class ListArticlesAdapter(
                 .into(holder.image)
 
 
-        holder.favorits.setOnClickListener{
-            handler.onFavoritsArticle(article)
+        if (isArticleFav(article)){
+            holder.favorits.setBackgroundResource(R.drawable.ic_favorite_round_24)
         }
-
+        else {
+            holder.favorits.setBackgroundResource(R.drawable.ic_favorite_border_24)
+        }
+        holder.favorits.setOnClickListener{
+            if (isArticleFav(article)){
+                holder.favorits.setBackgroundResource(R.drawable.ic_favorite_border_24)
+                handler.onRemoveFavArticle(article)
+            }
+            else {
+                holder.favorits.setBackgroundResource(R.drawable.ic_favorite_round_24)
+                handler.onFavoritsArticle(article)
+            }
+        }
 
     }
 
+    fun isArticleFav(article: Article):Boolean{
+        for (item: Article in handler.getListArticlesFav()){
+            if (item.url == article.url) return true
+
+        }
+        return false
+    }
 
     override fun getItemCount(): Int {
         return mArticle.size

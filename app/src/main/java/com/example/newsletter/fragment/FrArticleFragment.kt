@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.newsletter.MainActivity
 import com.example.newsletter.NavigationIconClickListener
 import com.example.newsletter.NavigationListener
 import com.example.newsletter.R
@@ -179,15 +180,22 @@ class FrArticleFragment : Fragment(), ListArticlesHandler{
      * Car on ne peut mas modifier les éléments de vue dans un thread secondaire
      */
     private fun bindData(articles: List<Article>){
-        val adapter = ListArticlesAdapter(articles,this)
+        val adapter = ListArticlesAdapter(articles , this)
         lifecycleScope.launch(Dispatchers.Main) {
-            //val adapter = ListArticlesAdapter(articles)
             recyclerView.adapter = adapter
         }
     }
 
     override fun onFavoritsArticle(article: Article) {
         FavoritsDatabase.getInstance(this).FavoritsApiService().insertArticle(article)
+    }
+
+    override fun onRemoveFavArticle(article: Article) {
+        FavoritsDatabase.getInstance(this).FavoritsApiService().deleteArticle(article)
+    }
+
+    override fun getListArticlesFav(): List<Article> {
+        return FavoritsDatabase.getInstance(this).FavoritsApiService().getArticle()
     }
 
 

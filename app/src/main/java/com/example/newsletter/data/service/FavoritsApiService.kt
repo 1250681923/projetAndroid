@@ -16,5 +16,5 @@ interface FavoritsApiService {
     fun insertArticle(article: Article)
 
     @Query("DELETE FROM articles")
-    fun deleteArticle()
+    fun deleteArticle(article: Article)
 }
