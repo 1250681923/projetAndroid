@@ -10,11 +10,12 @@ import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.fragment.app.Fragment
+import com.example.newsletter.MainActivity
 import com.example.newsletter.NavigationListener
 import com.example.newsletter.R
 
 
-class PageAccueilFragment: Fragment(), RadioGroup.OnCheckedChangeListener {
+class PageAccueilFragment : Fragment(), RadioGroup.OnCheckedChangeListener {
     private lateinit var button: Button
     private lateinit var li: RadioGroup
     private lateinit var Fr: RadioButton

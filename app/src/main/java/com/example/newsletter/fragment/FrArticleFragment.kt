@@ -1,8 +1,8 @@
 package com.example.newsletter.fragment
 
+import android.app.Activity
 import android.os.Build
 import android.os.Bundle
-import android.text.TextUtils.replace
 import android.view.*
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Button
@@ -20,12 +20,13 @@ import com.example.newsletter.R
 import com.example.newsletter.adapters.ListArticlesAdapter
 import com.example.newsletter.adapters.ListArticlesHandler
 import com.example.newsletter.data.ArticleRepository
+import com.example.newsletter.data.FavoritsDatabase
 import com.example.newsletter.models.Article
 import kotlinx.android.synthetic.main.list_articles_fragment.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class FrArticleFragment : Fragment(){
+class FrArticleFragment: Fragment(){
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var politics: Button
@@ -34,6 +35,9 @@ class FrArticleFragment : Fragment(){
     private lateinit var general: Button
     private lateinit var health: Button
     private lateinit var science: Button
+
+
+    
     /**
      * Fonction permettant de définir une vue à attacher à un fragment
      */
@@ -50,6 +54,8 @@ class FrArticleFragment : Fragment(){
         general =view.findViewById(R.id.general)
         health = view.findViewById(R.id.health)
         science = view.findViewById(R.id.science)
+
+
 
         // Set up the toolbar.
         (activity as AppCompatActivity).setSupportActionBar(view.app_bar)
@@ -175,11 +181,12 @@ class FrArticleFragment : Fragment(){
      * Car on ne peut mas modifier les éléments de vue dans un thread secondaire
      */
     private fun bindData(articles: List<Article>){
+        val adapter = ListArticlesAdapter(articles)
         lifecycleScope.launch(Dispatchers.Main) {
-            val adapter = ListArticlesAdapter(articles)
             recyclerView.adapter = adapter
         }
     }
+
 
 
 }
