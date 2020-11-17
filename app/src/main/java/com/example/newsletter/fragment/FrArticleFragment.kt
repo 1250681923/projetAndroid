@@ -179,8 +179,9 @@ class FrArticleFragment : Fragment(), ListArticlesHandler{
      * Car on ne peut mas modifier les éléments de vue dans un thread secondaire
      */
     private fun bindData(articles: List<Article>){
+        val adapter = ListArticlesAdapter(articles,this)
         lifecycleScope.launch(Dispatchers.Main) {
-            val adapter = ListArticlesAdapter(articles)
+            //val adapter = ListArticlesAdapter(articles)
             recyclerView.adapter = adapter
         }
     }
