@@ -1,8 +1,8 @@
 package com.example.newsletter.models
 
+import androidx.room.Entity
 import java.io.FileDescriptor
-
-data class Article (
+@Entity(tableName = "articles") data class Article (
         val author: String,
         val title: String,
         val description: String,
@@ -11,6 +11,8 @@ data class Article (
         val publishedAt: String,
         val content: String
 )
+
+
 data class ArticleResponse(
         val status:String,
         val totalResults: Int,

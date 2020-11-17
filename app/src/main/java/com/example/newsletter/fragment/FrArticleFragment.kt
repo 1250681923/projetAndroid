@@ -2,7 +2,6 @@ package com.example.newsletter.fragment
 
 import android.os.Build
 import android.os.Bundle
-import android.text.TextUtils.replace
 import android.view.*
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Button
@@ -13,19 +12,19 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.newsletter.MainActivity
 import com.example.newsletter.NavigationIconClickListener
 import com.example.newsletter.NavigationListener
 import com.example.newsletter.R
 import com.example.newsletter.adapters.ListArticlesAdapter
 import com.example.newsletter.adapters.ListArticlesHandler
 import com.example.newsletter.data.ArticleRepository
+import com.example.newsletter.data.FavoritsDatabase
 import com.example.newsletter.models.Article
 import kotlinx.android.synthetic.main.list_articles_fragment.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class FrArticleFragment : Fragment(){
+class FrArticleFragment : Fragment(), ListArticlesHandler{
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var politics: Button
@@ -34,6 +33,9 @@ class FrArticleFragment : Fragment(){
     private lateinit var general: Button
     private lateinit var health: Button
     private lateinit var science: Button
+
+
+    private lateinit var favorits: Button
     /**
      * Fonction permettant de définir une vue à attacher à un fragment
      */
@@ -50,6 +52,8 @@ class FrArticleFragment : Fragment(){
         general =view.findViewById(R.id.general)
         health = view.findViewById(R.id.health)
         science = view.findViewById(R.id.science)
+
+        favorits = view.findViewById(R.id.btn_favories)
 
         // Set up the toolbar.
         (activity as AppCompatActivity).setSupportActionBar(view.app_bar)
@@ -179,6 +183,10 @@ class FrArticleFragment : Fragment(){
             val adapter = ListArticlesAdapter(articles)
             recyclerView.adapter = adapter
         }
+    }
+
+    override fun onFavoritsArticle(article: Article) {
+        FavoritsDatabase.getInstance(this).FavoritsApiService().insertArticle(article)
     }
 
 
