@@ -4,21 +4,18 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.newsletter.data.service.ArticleOnlineService
-import com.example.newsletter.data.service.FavoritsApiService
+import com.example.newsletter.data.service.FavoritsBaseService
 import com.example.newsletter.models.Article
-import com.example.newsletter.models.ArticleResponse
 
 @Database(entities = arrayOf(Article::class), version = 1)
 abstract class FavoritsDatabase : RoomDatabase() {
 
-    abstract fun FavoritsApiService(): FavoritsApiService
+//    abstract fun FavoritsApiService(): FavoritsApiService
+    private val apiService: FavoritsBaseService = FavoritsBaseService()
 
-//    private val apiService: FavoritsApiService = FavoritsApiService()
-//
-//    fun onFavoritsArticle(article: Article) = apiService.insertArticle(article)
-//    fun onRemoveFavArticle(id: Int) = apiService.deleteArticle(id)
-//    fun getListArticlesFav() = apiService.getArticle()
+    fun onFavoritsArticle(article: Article) = apiService.onFavoritsArticle(article)
+    fun onRemoveFavArticle(id: Int) = apiService.onRemoveFavArticle(id)
+    fun getListArticlesFav() = apiService.getListArticlesFav()
 
     companion object {
         @Volatile

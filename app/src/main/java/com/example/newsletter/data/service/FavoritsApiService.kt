@@ -7,7 +7,7 @@ interface FavoritsApiService {
 
 
     @Query("SELECT * FROM articles")
-    fun getArticle(): MutableList<Article>
+    fun getArticle(): List<Article>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertArticle(article: Article)

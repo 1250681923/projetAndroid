@@ -88,7 +88,6 @@ class FrArticleFragment: Fragment(), ListArticlesHandler{
         super.onViewCreated(view, savedInstanceState)
         getArticles()
         setHasOptionsMenu(true)
-
         politics.setOnClickListener {
             getArticlesByCategory("politics")
         }
@@ -107,7 +106,42 @@ class FrArticleFragment: Fragment(), ListArticlesHandler{
         science.setOnClickListener {
             getArticlesByCategory("science")
         }
+
+
+
+//
+//        if (isArticleFav(article)){
+//            holder.favorits.setBackgroundResource(R.drawable.ic_favorite_round_24)
+//        }
+//        else {
+//            holder.favorits.setBackgroundResource(R.drawable.ic_favorite_border_24)
+//        }
+//        holder.favorits.setOnClickListener{
+//            if (isArticleFav(article)){
+//                holder.favorits.setBackgroundResource(R.drawable.ic_favorite_border_24)
+//                handler.onRemoveFavArticle(article.id)
+//                //Toast.makeText(handler,"retiré des favoris", Toast.LENGTH_SHORT).show()
+//            }
+//            else {
+//                holder.favorits.setBackgroundResource(R.drawable.ic_favorite_round_24)
+//                a++
+//                article.id = a
+//                handler.onFavoritsArticle(article)
+//                //Toast.makeText(handler,"ajouté aux favoris", Toast.LENGTH_SHORT).show()
+//            }
+//            println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ${it}")
+//        }
     }
+
+//    fun isArticleFav(article: Article):Boolean{
+//        for (item: Article in handler.getListArticlesFav()){
+//            if (item.url == article.url) return true
+//
+//        }
+//        return false
+//
+//    }
+
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
         menuInflater.inflate(R.menu.shr_toolbar_menu, menu)
         super.onCreateOptionsMenu(menu, menuInflater)
@@ -151,13 +185,6 @@ class FrArticleFragment: Fragment(), ListArticlesHandler{
             }
             return true
         }
-
-
-
-
-
-
-
         return super.onOptionsItemSelected(item)
     }
     /**
@@ -187,21 +214,16 @@ class FrArticleFragment: Fragment(), ListArticlesHandler{
             recyclerView.adapter = adapter
         }
     }
-
-
-
-
-
     override fun onFavoritsArticle(article: Article) {
-       FavoritsDatabase.getInstance(requireContext()).FavoritsApiService().insertArticle(article)
+       FavoritsDatabase.getInstance(requireContext()).onFavoritsArticle(article)
     }
 
     override fun onRemoveFavArticle(id: Int) {
-        FavoritsDatabase.getInstance(requireContext()).FavoritsApiService().deleteArticle(id)
+        FavoritsDatabase.getInstance(requireContext()).onRemoveFavArticle(id)
     }
 
-    override fun getListArticlesFav(): MutableList<Article> {
-        return FavoritsDatabase.getInstance(requireContext()).FavoritsApiService().getArticle()
+    override fun getListArticlesFav(): List<Article> {
+        return FavoritsDatabase.getInstance(requireContext()).getListArticlesFav()
     }
 }
 
