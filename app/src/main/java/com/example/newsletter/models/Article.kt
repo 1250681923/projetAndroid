@@ -3,10 +3,10 @@ package com.example.newsletter.models
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.FileDescriptor
-@Entity(tableName = "articles")
+//@Entity(tableName = "articles")
 data class Article (
-        @PrimaryKey
-        var id: Int,
+//        @PrimaryKey
+//        var id: Int,
         val author: String,
         val title: String,
         val description: String,

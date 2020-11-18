@@ -22,7 +22,6 @@ class ListArticlesAdapter(
     val handler: ListArticlesHandler
 ) : RecyclerView.Adapter<ListArticlesAdapter.ViewHolder>() {
     private val mArticle: List<Article> = items
-    private var a: Int = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(parent.context)
@@ -33,13 +32,12 @@ class ListArticlesAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val article: Article = mArticle[position]
-        // Display Neighbour Name
+
         holder.title.text = article.title
         holder.content.text = article.content
 
         val context = holder.itemView
-        //val context : Context = holder.mArticle.context
-        // Display Neighbour Avatar
+
         Glide.with(context)
                 .load(article.urlToImage)
                 .apply(RequestOptions.circleCropTransform())
@@ -47,7 +45,6 @@ class ListArticlesAdapter(
                 .error(R.drawable.ic_launcher_background)
                 .skipMemoryCache(false)
                 .into(holder.image)
-
 
         if (isArticleFav(article)){
             holder.favorits.setBackgroundResource(R.drawable.ic_favorite_round_24)
@@ -58,13 +55,11 @@ class ListArticlesAdapter(
         holder.favorits.setOnClickListener{
             if (isArticleFav(article)){
                 holder.favorits.setBackgroundResource(R.drawable.ic_favorite_border_24)
-                handler.onRemoveFavArticle(article.id)
+                handler.onRemoveFavArticle(article)
                 //Toast.makeText(handler,"retiré des favoris", Toast.LENGTH_SHORT).show()
             }
             else {
                 holder.favorits.setBackgroundResource(R.drawable.ic_favorite_round_24)
-                a++
-                article.id = a
                 handler.onFavoritsArticle(article)
                 //Toast.makeText(handler,"ajouté aux favoris", Toast.LENGTH_SHORT).show()
             }

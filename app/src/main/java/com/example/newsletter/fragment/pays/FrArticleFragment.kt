@@ -1,4 +1,4 @@
-package com.example.newsletter.fragment
+package com.example.newsletter.fragment.pays
 
 import android.os.Build
 import android.os.Bundle
@@ -12,18 +12,21 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.newsletter.MainActivity
 import com.example.newsletter.NavigationIconClickListener
+import com.example.newsletter.NavigationListener
 import com.example.newsletter.R
 import com.example.newsletter.adapters.ListArticlesAdapter
 import com.example.newsletter.adapters.ListArticlesHandler
 import com.example.newsletter.data.ArticleRepository
+import com.example.newsletter.data.FavoritsLocal.FavoritsRepository
+import com.example.newsletter.fragment.DeveloppeurFragment
+import com.example.newsletter.fragment.PageAccueilFragment
 import com.example.newsletter.models.Article
 import kotlinx.android.synthetic.main.list_articles_fragment.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ChArticleFragment: Fragment(), ListArticlesHandler{
+class FrArticleFragment: Fragment(), ListArticlesHandler{
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var politics: Button
@@ -33,6 +36,8 @@ class ChArticleFragment: Fragment(), ListArticlesHandler{
     private lateinit var health: Button
     private lateinit var science: Button
 
+
+    
     /**
      * Fonction permettant de définir une vue à attacher à un fragment
      */
@@ -50,16 +55,16 @@ class ChArticleFragment: Fragment(), ListArticlesHandler{
         health = view.findViewById(R.id.health)
         science = view.findViewById(R.id.science)
 
+
+
         // Set up the toolbar.
         (activity as AppCompatActivity).setSupportActionBar(view.app_bar)
-        view.app_bar.setNavigationOnClickListener(
-            NavigationIconClickListener(
+        view.app_bar.setNavigationOnClickListener(NavigationIconClickListener(
             activity!!,
             view.articles_list,
             AccelerateDecelerateInterpolator(),
             ContextCompat.getDrawable(context!!, R.drawable.shr_branded_menu), // Menu open icon
-            ContextCompat.getDrawable(context!!, R.drawable.shr_close_menu))
-        ) // Menu close icon
+            ContextCompat.getDrawable(context!!, R.drawable.shr_close_menu))) // Menu close icon
 
         recyclerView = view.findViewById(R.id.articles_list)
         recyclerView.layoutManager = LinearLayoutManager(context)
@@ -80,8 +85,11 @@ class ChArticleFragment: Fragment(), ListArticlesHandler{
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         getArticles()
+
         setHasOptionsMenu(true)
+
         politics.setOnClickListener {
             getArticlesByCategory("politics")
         }
@@ -100,53 +108,109 @@ class ChArticleFragment: Fragment(), ListArticlesHandler{
         science.setOnClickListener {
             getArticlesByCategory("science")
         }
+
+
+
+
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
         menuInflater.inflate(R.menu.shr_toolbar_menu, menu)
         super.onCreateOptionsMenu(menu, menuInflater)
     }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle action bar item clicks here.
+        val id = item.getItemId()
 
+        if (id == R.id.page_1) {
+            (activity as? NavigationListener)?.let {
+                it.changeFragment(PageAccueilFragment())
+            }
+            return true
+        }
+
+        if (id == R.id.page_2) {
+            (activity as? NavigationListener)?.let {
+                it.changeFragment(PageAccueilFragment())
+            }
+            return true
+        }
+
+        //developpeur
+        if (id == R.id.page_3) {
+            (activity as? NavigationListener)?.let {
+                it.changeFragment(DeveloppeurFragment())
+            }
+            return true
+        }
+        //Fonction
+        if (id == R.id.page_4) {
+            (activity as? NavigationListener)?.let {
+                it.changeFragment(PageAccueilFragment())
+            }
+            return true
+        }
+        //library
+        if (id == R.id.page_5) {
+            (activity as? NavigationListener)?.let {
+                it.changeFragment(PageAccueilFragment())
+            }
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
     /**
      * Récupère la liste des articles dans un thread secondaire
      */
     private fun getArticles(){
         lifecycleScope.launch(Dispatchers.IO) {
-            val articles = ArticleRepository.getInstance().getArticlesByCountry("cn")
-            bindData(articles.articles)
-        }
-    }
-    private fun getArticlesByCategory(category:String){
-        lifecycleScope.launch(Dispatchers.IO) {
-            val articles = ArticleRepository.getInstance().getArticlesByCategory("cn",category)
+            val articles = ArticleRepository.getInstance().getArticlesByCountry("fr")
             bindData(articles.articles)
         }
     }
 
+    private fun getArticlesByCategory(category:String){
+        lifecycleScope.launch(Dispatchers.IO) {
+            val articles = ArticleRepository.getInstance().getArticlesByCategory("fr",category)
+            bindData(articles.articles)
+        }
+    }
     /**
      * Rempli le recyclerview avec les données récupérées dans le web service
      * Cette action doit s'effectuer sur le thread principale
      * Car on ne peut mas modifier les éléments de vue dans un thread secondaire
      */
     private fun bindData(articles: List<Article>){
-        val adapter = ListArticlesAdapter(articles, this)
+        val adapter = ListArticlesAdapter(articles,this)
         lifecycleScope.launch(Dispatchers.Main) {
-
             recyclerView.adapter = adapter
         }
     }
 
     override fun onFavoritsArticle(article: Article) {
-        TODO("Not yet implemented")
+        FavoritsRepository.getInstance().createFavorit(article)
     }
 
-    override fun onRemoveFavArticle(id: Int) {
-        TODO("Not yet implemented")
+    override fun onRemoveFavArticle(article: Article) {
+        FavoritsRepository.getInstance().remove(article)
     }
 
     override fun getListArticlesFav(): List<Article> {
-        TODO("Not yet implemented")
+        return FavoritsRepository.getInstance().getNeighbours()
     }
 
+
+//    override fun onFavoritsArticle(article: Article) {
+//       FavoritsDatabase.getInstance(requireContext()).onFavoritsArticle(article)
+//    }
+//
+//    override fun onRemoveFavArticle(id: Int) {
+//        FavoritsDatabase.getInstance(requireContext()).onRemoveFavArticle(id)
+//    }
+//
+//    override fun getListArticlesFav(): List<Article> {
+//        return FavoritsDatabase.getInstance(requireContext()).getListArticlesFav()
+//    }
 }
 

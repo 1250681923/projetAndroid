@@ -1,8 +1,6 @@
 package com.example.newsletter.fragment
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,11 +8,12 @@ import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.fragment.app.Fragment
-import com.example.newsletter.MainActivity
 import com.example.newsletter.NavigationListener
 import com.example.newsletter.R
-import com.example.newsletter.adapters.ListArticlesHandler
-import com.example.newsletter.models.Article
+import com.example.newsletter.fragment.pays.AnArticleFragement
+import com.example.newsletter.fragment.pays.ChArticleFragment
+import com.example.newsletter.fragment.pays.EtArticleFragment
+import com.example.newsletter.fragment.pays.FrArticleFragment
 
 
 class PageAccueilFragment : Fragment(), RadioGroup.OnCheckedChangeListener{

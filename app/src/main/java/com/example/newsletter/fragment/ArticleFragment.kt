@@ -99,7 +99,7 @@ class ArticleFragment: Fragment(), ListArticlesHandler{
         TODO("Not yet implemented")
     }
 
-    override fun onRemoveFavArticle(id: Int) {
+    override fun onRemoveFavArticle(article: Article) {
         TODO("Not yet implemented")
     }
 

@@ -4,6 +4,6 @@ import com.example.newsletter.models.Article
 
 interface ListArticlesHandler {
     fun onFavoritsArticle(article: Article)
-    fun onRemoveFavArticle(id: Int)
+    fun onRemoveFavArticle(article: Article)
     fun getListArticlesFav(): List<Article>
 }
