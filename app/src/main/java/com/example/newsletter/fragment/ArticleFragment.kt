@@ -14,6 +14,7 @@ import com.example.newsletter.MainActivity
 import com.example.newsletter.NavigationIconClickListener
 import com.example.newsletter.R
 import com.example.newsletter.adapters.ListArticlesAdapter
+import com.example.newsletter.adapters.ListArticlesHandler
 import com.example.newsletter.data.ArticleRepository
 import com.example.newsletter.models.Article
 import kotlinx.android.synthetic.main.list_articles_fragment.view.*
@@ -21,7 +22,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class ArticleFragment : Fragment(){
+class ArticleFragment: Fragment(), ListArticlesHandler{
 
     private lateinit var recyclerView: RecyclerView
 
@@ -87,11 +88,23 @@ class ArticleFragment : Fragment(){
      * Car on ne peut mas modifier les éléments de vue dans un thread secondaire
      */
     private fun bindData(articles: List<Article>){
-        val adapter = ListArticlesAdapter(articles)
+        val adapter = ListArticlesAdapter(articles, this)
         lifecycleScope.launch(Dispatchers.Main) {
 
             recyclerView.adapter = adapter
         }
+    }
+
+    override fun onFavoritsArticle(article: Article) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onRemoveFavArticle(article: Article) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getListArticlesFav(): List<Article> {
+        TODO("Not yet implemented")
     }
 
 }

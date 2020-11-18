@@ -18,7 +18,8 @@ import kotlinx.coroutines.CoroutineScope
 
 //val root: MainActivity
 class ListArticlesAdapter(
-    items: List<Article>
+    items: List<Article>,
+    val handler: ListArticlesHandler
 ) : RecyclerView.Adapter<ListArticlesAdapter.ViewHolder>() {
     private val mArticle: List<Article> = items
 
@@ -31,13 +32,12 @@ class ListArticlesAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val article: Article = mArticle[position]
-        // Display Neighbour Name
+
         holder.title.text = article.title
         holder.content.text = article.content
 
         val context = holder.itemView
-        //val context : Context = holder.mArticle.context
-        // Display Neighbour Avatar
+
         Glide.with(context)
                 .load(article.urlToImage)
                 .apply(RequestOptions.circleCropTransform())
@@ -45,7 +45,6 @@ class ListArticlesAdapter(
                 .error(R.drawable.ic_launcher_background)
                 .skipMemoryCache(false)
                 .into(holder.image)
-
 
         if (isArticleFav(article)){
             holder.favorits.setBackgroundResource(R.drawable.ic_favorite_round_24)
@@ -56,13 +55,13 @@ class ListArticlesAdapter(
         holder.favorits.setOnClickListener{
             if (isArticleFav(article)){
                 holder.favorits.setBackgroundResource(R.drawable.ic_favorite_border_24)
-               // root.onRemoveFavArticle(article)
-               // Toast.makeText(root,"retiré des favoris", Toast.LENGTH_SHORT).show()
+                handler.onRemoveFavArticle(article)
+                //Toast.makeText(handler,"retiré des favoris", Toast.LENGTH_SHORT).show()
             }
             else {
                 holder.favorits.setBackgroundResource(R.drawable.ic_favorite_round_24)
-                //root.onFavoritsArticle(article)
-               // Toast.makeText(root,"ajouté aux favoris", Toast.LENGTH_SHORT).show()
+                handler.onFavoritsArticle(article)
+                //Toast.makeText(handler,"ajouté aux favoris", Toast.LENGTH_SHORT).show()
             }
             println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ${it}")
         }
@@ -70,10 +69,10 @@ class ListArticlesAdapter(
     }
 
     fun isArticleFav(article: Article):Boolean{
-//        for (item: Article in root.getListArticlesFav()){
-//            if (item.url == article.url) return true
-//
-//        }
+        for (item: Article in handler.getListArticlesFav()){
+            if (item.url == article.url) return true
+
+        }
         return false
 
     }
