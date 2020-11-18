@@ -194,6 +194,7 @@ class FrArticleFragment: Fragment(), ListArticlesHandler{
 
     override fun onRemoveFavArticle(article: Article) {
         FavoritsRepository.getInstance().remove(article)
+        recyclerView.adapter?.notifyDataSetChanged()
     }
 
     override fun getListArticlesFav(): List<Article> {
