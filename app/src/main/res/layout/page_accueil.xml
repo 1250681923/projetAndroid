@@ -16,116 +16,159 @@
     <!--        app:layout_constraintBottom_toTopOf="@id/checkBox"-->
     <!--        app:layout_constraintStart_toStartOf="parent"-->
     <!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="96dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="101dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_home_24"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <TextView
         android:id="@+id/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="300dp"
-        android:layout_marginBottom="409dp"
-        android:text="Choisissez le pays:"
+        android:layout_marginStart="100dp"
+        android:layout_marginBottom="450dp"
+        android:text="@string/choisissez_le_pays"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="138dp" />
 
     <RadioGroup
         android:id="@+id/rg_lan"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_marginTop="20dp"
-        android:orientation="horizontal"
+
         app:layout_constraintTop_toBottomOf="@+id/textview">
 
         <RadioButton
             android:id="@+id/Fr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="France" />
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="1dp"
+            android:text="@string/france" />
 
         <RadioButton
             android:id="@+id/Ch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chine" />
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="1dp"
+            android:text="@string/chine" />
+
         <RadioButton
             android:id="@+id/Et"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Etats Unis" />
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="1dp"
+            android:text="@string/etats_unis" />
+
         <RadioButton
             android:id="@+id/An"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Angleterre" />
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="1dp"
+            android:text="@string/angleterre" />
     </RadioGroup>
-<!--    <CheckBox-->
-<!--        android:id="@+id/checkBox2"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginTop="300dp"-->
-<!--        android:layout_marginBottom="350dp"-->
-<!--        android:text="Chine"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/checkBox"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-<!--    <CheckBox-->
-<!--        android:id="@+id/checkBox3"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginTop="300dp"-->
-<!--        android:layout_marginBottom="350dp"-->
-<!--        android:text="Etats Unis"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/checkBox2"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-<!--    <CheckBox-->
-<!--        android:id="@+id/checkBox4"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginTop="300dp"-->
-<!--        android:layout_marginBottom="350dp"-->
-<!--        android:text="Angleterre"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/checkBox3"-->
-<!--        app:layout_constraintTop_toTopOf="parent"/>-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/textView2"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginTop="300dp"-->
-<!--        android:text="Choisissez le pays:"-->
-<!--        android:textSize="16sp"-->
-<!--        app:layout_constraintBottom_toTopOf="@id/checkBox"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    <!--    <CheckBox-->
+    <!--        android:id="@+id/checkBox2"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="20dp"-->
+    <!--        android:layout_marginTop="300dp"-->
+    <!--        android:layout_marginBottom="350dp"-->
+    <!--        android:text="Chine"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintStart_toEndOf="@+id/checkBox"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--    <CheckBox-->
+    <!--        android:id="@+id/checkBox3"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="20dp"-->
+    <!--        android:layout_marginTop="300dp"-->
+    <!--        android:layout_marginBottom="350dp"-->
+    <!--        android:text="Etats Unis"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintStart_toEndOf="@+id/checkBox2"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--    <CheckBox-->
+    <!--        android:id="@+id/checkBox4"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="20dp"-->
+    <!--        android:layout_marginTop="300dp"-->
+    <!--        android:layout_marginBottom="350dp"-->
+    <!--        android:text="Angleterre"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintStart_toEndOf="@+id/checkBox3"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"/>-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/textView2"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="20dp"-->
+    <!--        android:layout_marginTop="300dp"-->
+    <!--        android:text="Choisissez le pays:"-->
+    <!--        android:textSize="16sp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@id/checkBox"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="100dp"
         android:enabled="false"
-        android:text="On y va!!!"
+        android:text="@string/on_y_va"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rg_lan" />
+
     <Button
         android:id="@+id/buttonFavoris"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:insetLeft="50dp"
         android:insetRight="50dp"
-        android:text="Mes favoris"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:text="@string/mes_favoris"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
