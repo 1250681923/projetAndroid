@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -42,6 +43,7 @@
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:layout_marginStart="100dp"
                 android:text="Yue ZHAO" />
 
@@ -49,8 +51,18 @@
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:layout_marginStart="100dp"
-                android:text="Yajuan LUO" />
+                android:text="Yajuan LUO " />
+            <TextView
+                android:id="@+id/textView5"
+                android:autoLink="all"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="50dp"
+                android:text="Le lien de notre projet:
+                                          https://github.com/1250681923/projetAndroid" />
         </LinearLayout>
 
 

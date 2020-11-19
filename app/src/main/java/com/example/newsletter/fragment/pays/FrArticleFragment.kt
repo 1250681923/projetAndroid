@@ -147,14 +147,14 @@ class FrArticleFragment: Fragment(), ListArticlesHandler{
         //Fonction
         if (id == R.id.page_4) {
             (activity as? NavigationListener)?.let {
-                it.changeFragment(PageAccueilFragment())
+                it.changeFragment(FunctionFragment())
             }
             return true
         }
         //library
         if (id == R.id.page_5) {
             (activity as? NavigationListener)?.let {
-                it.changeFragment(PageAccueilFragment())
+                it.changeFragment(LibrariesFragment())
             }
             return true
         }
