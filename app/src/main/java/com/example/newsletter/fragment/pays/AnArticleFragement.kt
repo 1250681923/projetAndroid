@@ -1,4 +1,4 @@
-package com.example.newsletter.fragment
+package com.example.newsletter.fragment.pays
 
 import android.os.Build
 import android.os.Bundle
@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.newsletter.MainActivity
 import com.example.newsletter.NavigationIconClickListener
 import com.example.newsletter.R
 import com.example.newsletter.adapters.ListArticlesAdapter
@@ -22,7 +23,7 @@ import kotlinx.android.synthetic.main.list_articles_fragment.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ChArticleFragment : Fragment(){
+class AnArticleFragement: Fragment(), ListArticlesHandler{
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var politics: Button
@@ -81,6 +82,7 @@ class ChArticleFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
         getArticles()
         setHasOptionsMenu(true)
+
         politics.setOnClickListener {
             getArticlesByCategory("politics")
         }
@@ -99,25 +101,25 @@ class ChArticleFragment : Fragment(){
         science.setOnClickListener {
             getArticlesByCategory("science")
         }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
         menuInflater.inflate(R.menu.shr_toolbar_menu, menu)
         super.onCreateOptionsMenu(menu, menuInflater)
     }
-
     /**
      * Récupère la liste des articles dans un thread secondaire
      */
     private fun getArticles(){
         lifecycleScope.launch(Dispatchers.IO) {
-            val articles = ArticleRepository.getInstance().getArticlesByCountry("cn")
+            val articles = ArticleRepository.getInstance().getArticlesByCountry("gb")
             bindData(articles.articles)
         }
     }
     private fun getArticlesByCategory(category:String){
         lifecycleScope.launch(Dispatchers.IO) {
-            val articles = ArticleRepository.getInstance().getArticlesByCategory("cn",category)
+            val articles = ArticleRepository.getInstance().getArticlesByCategory("gb",category)
             bindData(articles.articles)
         }
     }
@@ -128,11 +130,23 @@ class ChArticleFragment : Fragment(){
      * Car on ne peut mas modifier les éléments de vue dans un thread secondaire
      */
     private fun bindData(articles: List<Article>){
-        val adapter = ListArticlesAdapter(articles)
+        val adapter = ListArticlesAdapter(articles,this)
         lifecycleScope.launch(Dispatchers.Main) {
 
             recyclerView.adapter = adapter
         }
+    }
+
+    override fun onFavoritsArticle(article: Article) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onRemoveFavArticle(article: Article) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getListArticlesFav(): List<Article> {
+        TODO("Not yet implemented")
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.newsletter.fragment
+package com.example.newsletter.fragment.pays
 
 import android.os.Build
 import android.os.Bundle
@@ -13,16 +13,20 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsletter.NavigationIconClickListener
+import com.example.newsletter.NavigationListener
 import com.example.newsletter.R
 import com.example.newsletter.adapters.ListArticlesAdapter
 import com.example.newsletter.adapters.ListArticlesHandler
 import com.example.newsletter.data.ArticleRepository
+import com.example.newsletter.data.FavoritsLocal.FavoritsRepository
+import com.example.newsletter.fragment.DeveloppeurFragment
+import com.example.newsletter.fragment.PageAccueilFragment
 import com.example.newsletter.models.Article
 import kotlinx.android.synthetic.main.list_articles_fragment.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class EtArticleFragment : Fragment(){
+class FrArticleFragment: Fragment(), ListArticlesHandler{
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var politics: Button
@@ -31,13 +35,16 @@ class EtArticleFragment : Fragment(){
     private lateinit var general: Button
     private lateinit var health: Button
     private lateinit var science: Button
+
+
+    
     /**
      * Fonction permettant de définir une vue à attacher à un fragment
      */
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.list_articles_fragment, container, false)
 
@@ -48,24 +55,24 @@ class EtArticleFragment : Fragment(){
         health = view.findViewById(R.id.health)
         science = view.findViewById(R.id.science)
 
+
+
         // Set up the toolbar.
         (activity as AppCompatActivity).setSupportActionBar(view.app_bar)
-        view.app_bar.setNavigationOnClickListener(
-            NavigationIconClickListener(
+        view.app_bar.setNavigationOnClickListener(NavigationIconClickListener(
             activity!!,
             view.articles_list,
             AccelerateDecelerateInterpolator(),
             ContextCompat.getDrawable(context!!, R.drawable.shr_branded_menu), // Menu open icon
-            ContextCompat.getDrawable(context!!, R.drawable.shr_close_menu))
-        ) // Menu close icon
+            ContextCompat.getDrawable(context!!, R.drawable.shr_close_menu))) // Menu close icon
 
         recyclerView = view.findViewById(R.id.articles_list)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.addItemDecoration(
-            DividerItemDecoration(
-                requireContext(),
-                DividerItemDecoration.VERTICAL
-            )
+                DividerItemDecoration(
+                        requireContext(),
+                        DividerItemDecoration.VERTICAL
+                )
         )
         // Set cut corner background for API 23+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -78,8 +85,11 @@ class EtArticleFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         getArticles()
+
         setHasOptionsMenu(true)
+
         politics.setOnClickListener {
             getArticlesByCategory("politics")
         }
@@ -98,26 +108,71 @@ class EtArticleFragment : Fragment(){
         science.setOnClickListener {
             getArticlesByCategory("science")
         }
+
+
+
+
     }
+
+
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
         menuInflater.inflate(R.menu.shr_toolbar_menu, menu)
         super.onCreateOptionsMenu(menu, menuInflater)
     }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle action bar item clicks here.
+        val id = item.getItemId()
 
+        if (id == R.id.page_1) {
+            (activity as? NavigationListener)?.let {
+                it.changeFragment(PageAccueilFragment())
+            }
+            return true
+        }
 
+        if (id == R.id.page_2) {
+            (activity as? NavigationListener)?.let {
+                it.changeFragment(PageAccueilFragment())
+            }
+            return true
+        }
+
+        //developpeur
+        if (id == R.id.page_3) {
+            (activity as? NavigationListener)?.let {
+                it.changeFragment(DeveloppeurFragment())
+            }
+            return true
+        }
+        //Fonction
+        if (id == R.id.page_4) {
+            (activity as? NavigationListener)?.let {
+                it.changeFragment(FunctionFragment())
+            }
+            return true
+        }
+        //library
+        if (id == R.id.page_5) {
+            (activity as? NavigationListener)?.let {
+                it.changeFragment(LibrariesFragment())
+            }
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
     /**
      * Récupère la liste des articles dans un thread secondaire
      */
     private fun getArticles(){
         lifecycleScope.launch(Dispatchers.IO) {
-            val articles = ArticleRepository.getInstance().getArticlesByCountry("us")
+            val articles = ArticleRepository.getInstance().getArticlesByCountry("fr")
             bindData(articles.articles)
         }
     }
 
     private fun getArticlesByCategory(category:String){
         lifecycleScope.launch(Dispatchers.IO) {
-            val articles = ArticleRepository.getInstance().getArticlesByCategory("us",category)
+            val articles = ArticleRepository.getInstance().getArticlesByCategory("fr",category)
             bindData(articles.articles)
         }
     }
@@ -127,12 +182,36 @@ class EtArticleFragment : Fragment(){
      * Car on ne peut mas modifier les éléments de vue dans un thread secondaire
      */
     private fun bindData(articles: List<Article>){
-        val adapter = ListArticlesAdapter(articles)
+        val adapter = ListArticlesAdapter(articles,this)
         lifecycleScope.launch(Dispatchers.Main) {
-
             recyclerView.adapter = adapter
         }
     }
 
+    override fun onFavoritsArticle(article: Article) {
+        FavoritsRepository.getInstance().createFavorit(article)
+    }
+
+    override fun onRemoveFavArticle(article: Article) {
+        FavoritsRepository.getInstance().remove(article)
+        recyclerView.adapter?.notifyDataSetChanged()
+    }
+
+    override fun getListArticlesFav(): List<Article> {
+        return FavoritsRepository.getInstance().getNeighbours()
+    }
+
+
+//    override fun onFavoritsArticle(article: Article) {
+//       FavoritsDatabase.getInstance(requireContext()).onFavoritsArticle(article)
+//    }
+//
+//    override fun onRemoveFavArticle(id: Int) {
+//        FavoritsDatabase.getInstance(requireContext()).onRemoveFavArticle(id)
+//    }
+//
+//    override fun getListArticlesFav(): List<Article> {
+//        return FavoritsDatabase.getInstance(requireContext()).getListArticlesFav()
+//    }
 }
 

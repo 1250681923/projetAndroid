@@ -1,8 +1,6 @@
 package com.example.newsletter.fragment
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,9 +10,13 @@ import android.widget.RadioGroup
 import androidx.fragment.app.Fragment
 import com.example.newsletter.NavigationListener
 import com.example.newsletter.R
+import com.example.newsletter.fragment.pays.AnArticleFragement
+import com.example.newsletter.fragment.pays.ChArticleFragment
+import com.example.newsletter.fragment.pays.EtArticleFragment
+import com.example.newsletter.fragment.pays.FrArticleFragment
 
 
-class PageAccueilFragment: Fragment(), RadioGroup.OnCheckedChangeListener {
+class PageAccueilFragment : Fragment(), RadioGroup.OnCheckedChangeListener{
     private lateinit var button: Button
     private lateinit var li: RadioGroup
     private lateinit var Fr: RadioButton
@@ -50,7 +52,7 @@ class PageAccueilFragment: Fragment(), RadioGroup.OnCheckedChangeListener {
 
         button.setOnClickListener {
             (activity as? NavigationListener)?.let {
-                if (Fr.isChecked)   it.changeFragment(FrArticleFragment())
+                if (Fr.isChecked)   it.changeFragment(FrArticleFragment( ))
                 if (Ch.isChecked)   it.changeFragment(ChArticleFragment())
                 if (Et.isChecked)   it.changeFragment(EtArticleFragment())
                 if (An.isChecked)   it.changeFragment(AnArticleFragement())
@@ -62,6 +64,7 @@ class PageAccueilFragment: Fragment(), RadioGroup.OnCheckedChangeListener {
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
         button.isEnabled = Fr.isChecked || Ch.isChecked|| Et.isChecked|| An.isChecked
     }
+
 
 }
 

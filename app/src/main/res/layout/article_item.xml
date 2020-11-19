@@ -56,7 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/content"
         app:srcCompat="@drawable/ic_launcher_background" />
     <Button
-        android:id="@+id/btn_favories"
+        android:id="@+id/btn_favoris"
         android:layout_width="25dp"
         android:layout_height="24dp"
         android:layout_row="0"
