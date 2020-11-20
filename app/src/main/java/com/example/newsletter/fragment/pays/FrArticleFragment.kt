@@ -112,10 +112,6 @@ class FrArticleFragment: Fragment(), ListArticlesHandler{
         science.setOnClickListener {
             getArticlesByCategory("science")
         }
-
-
-
-
     }
 
 
@@ -151,7 +147,7 @@ class FrArticleFragment: Fragment(), ListArticlesHandler{
         //Fonction
         if (id == R.id.page_4) {
             (activity as? NavigationListener)?.let {
-                it.changeFragment(FonctionFragment())
+                it.changeFragment(FunctionFragment())
             }
             return true
         }
