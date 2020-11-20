@@ -203,15 +203,16 @@ class FrArticleFragment: Fragment(), ListArticlesHandler{
 
 
 //    override fun onFavoritsArticle(article: Article) {
-//       FavoritsDatabase.getInstance(requireContext()).onFavoritsArticle(article)
+//       FavoritsDatabase.getInstance(requireContext()).onFavoritsArticle(article,requireContext())
 //    }
 //
-//    override fun onRemoveFavArticle(id: Int) {
-//        FavoritsDatabase.getInstance(requireContext()).onRemoveFavArticle(id)
+//
+//    override fun onRemoveFavArticle(id : Int) {
+//        FavoritsDatabase.getInstance(requireContext()).onRemoveFavArticle(id,requireContext())
 //    }
 //
 //    override fun getListArticlesFav(): List<Article> {
-//        return FavoritsDatabase.getInstance(requireContext()).getListArticlesFav()
+//        return FavoritsDatabase.getInstance(requireContext()).getListArticlesFav(requireContext())
 //    }
 }
 
