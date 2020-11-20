@@ -13,7 +13,6 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/page_3"
-        android:icon="@drawable/ic_baseline_favorite_24"
         android:title="Développeurs"/>
     <item
         android:id="@+id/page_4"

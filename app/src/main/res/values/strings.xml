@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">Newsletter</string>
+    <string name="app_name" translatable="false">Newsletter</string>
+    <string name="chine">Chine</string>
+    <string name="etats_unis">Etats Unis</string>
+    <string name="france">France</string>
+    <string name="angleterre">Angleterre</string>
+    <string name="mes_favoris">Mes favoris</string>
+    <string name="on_y_va">On y va!!!</string>
+    <string name="choisissez_le_pays">Choisissez le pays:</string>
+
 </resources>

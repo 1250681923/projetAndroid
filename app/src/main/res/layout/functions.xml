@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="80dp"
+                android:text="Fonctionnalitées"
+                android:textSize="25sp"/>
+            <TextView
+                android:id="@+id/title1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Page d'accueil de l'application"
+                android:textSize="15sp"
+                android:textColor="#00ff00"/>
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:text="La mise en place de la page d'accueil de
+l'application dans laquelle les options de consulation sont organisées par éditeurs, par catégories (Politique, Economie, Education, Pandémie...)
+ aussi par pays ( France, Chine, Etats Unis, Angleterre…)." />
+            <TextView
+                android:id="@+id/title2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="10dp"
+                android:text="Liste des articles par catégorie"
+                android:textSize="15sp"
+                android:textColor="#00ff00"/>
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:text="Quand l'utilisateur selectionne un article sur la page d'accueil, afficher tous les articles correspondant à cette catégorie dans un fragment
+La vue doit contenir :Le titre de l'article,un appercu du contenu du message (3 lignes maximum),
+l'auteur de l'article,la date de publication, l'image liée à l'article
+un bouton permettant d'ajouter un article en favori (un coeur). Le coeur creux si l'article n'est pas en favori, sinon il est plein." />
+            <TextView
+                android:id="@+id/title3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Gestion des favoris"
+                android:textSize="15sp"
+                android:textColor="#00ff00"/>
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:text="Quand l'utilisateur clique sur l'icone favori, il faut sauvegarder l'article dans une base de données locales.
+Définir une vue permettant à l'utilisateur de voir tous ses articles favoris. Le lien vers cette vue doit être placée dans la barre de navigation en haut à droite dans la page d'accueil et dans la la vue liste d'articles." />
+            <TextView
+                android:id="@+id/title4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Détail d'un article"
+                android:textSize="15sp"
+                android:textColor="#00ff00"/>
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:text="Quand l'utilisateur clique sur un article, créer une vue permettant d'afficher le détail de l'article. Cette vue doit afficher toutes les informations de l'article ainsi qu'un lien vers le site de l'éditeur. Le lien doit ouvrir une page web dans un navigateur externe.." />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
