@@ -13,9 +13,9 @@
 ////    abstract fun FavoritsApiService(): FavoritsApiService
 //    private val apiService: FavoritsBaseService = FavoritsBaseService()
 //
-//    fun onFavoritsArticle(article: Article) = apiService.onFavoritsArticle(article)
-//    fun onRemoveFavArticle(id: Int) = apiService.onRemoveFavArticle(id)
-//    fun getListArticlesFav() = apiService.getListArticlesFav()
+//    fun onFavoritsArticle(article: Article, context: Context) = apiService.onFavoritsArticle(article, context)
+//    fun onRemoveFavArticle(id: Int, context: Context) = apiService.onRemoveFavArticle(id,context)
+//    fun getListArticlesFav(context: Context) = apiService.getListArticlesFav(context)
 //
 //    companion object {
 //        @Volatile

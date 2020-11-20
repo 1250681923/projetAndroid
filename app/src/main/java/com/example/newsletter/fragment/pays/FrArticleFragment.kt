@@ -20,8 +20,10 @@ import com.example.newsletter.adapters.ListArticlesHandler
 import com.example.newsletter.data.ArticleRepository
 import com.example.newsletter.data.FavoritsLocal.FavoritsRepository
 import com.example.newsletter.fragment.DeveloppeurFragment
+
 import com.example.newsletter.fragment.FunctionFragment
 import com.example.newsletter.fragment.LibrariesFragment
+
 import com.example.newsletter.fragment.PageAccueilFragment
 import com.example.newsletter.models.Article
 import kotlinx.android.synthetic.main.list_articles_fragment.view.*
@@ -149,7 +151,7 @@ class FrArticleFragment: Fragment(), ListArticlesHandler{
         //Fonction
         if (id == R.id.page_4) {
             (activity as? NavigationListener)?.let {
-                it.changeFragment(FunctionFragment())
+                it.changeFragment(FonctionFragment())
             }
             return true
         }
@@ -205,15 +207,16 @@ class FrArticleFragment: Fragment(), ListArticlesHandler{
 
 
 //    override fun onFavoritsArticle(article: Article) {
-//       FavoritsDatabase.getInstance(requireContext()).onFavoritsArticle(article)
+//       FavoritsDatabase.getInstance(requireContext()).onFavoritsArticle(article,requireContext())
 //    }
 //
-//    override fun onRemoveFavArticle(id: Int) {
-//        FavoritsDatabase.getInstance(requireContext()).onRemoveFavArticle(id)
+//
+//    override fun onRemoveFavArticle(id : Int) {
+//        FavoritsDatabase.getInstance(requireContext()).onRemoveFavArticle(id,requireContext())
 //    }
 //
 //    override fun getListArticlesFav(): List<Article> {
-//        return FavoritsDatabase.getInstance(requireContext()).getListArticlesFav()
+//        return FavoritsDatabase.getInstance(requireContext()).getListArticlesFav(requireContext())
 //    }
 }
 
