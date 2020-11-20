@@ -112,10 +112,6 @@ class FrArticleFragment: Fragment(), ListArticlesHandler{
         science.setOnClickListener {
             getArticlesByCategory("science")
         }
-
-
-
-
     }
 
 
