@@ -11,7 +11,7 @@ import com.example.newsletter.models.Librarie
 class ListLibrariesAdapter(
     items: List<Librarie>
 ) : RecyclerView.Adapter<ListLibrariesAdapter.ViewHolder>(){
-    private val mNeighbours: List<Librarie> = items
+    private val mLibrarie: List<Librarie> = items
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.librarie_item, parent, false)
@@ -33,11 +33,15 @@ class ListLibrariesAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+
+
+        val library:Librarie = mLibrarie[position]
+        holder.librarieName.text =library.librairie_name
+        holder.librarieDiscrip.text = library.librairie_description
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return mLibrarie.size
     }
 
 

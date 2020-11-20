@@ -20,7 +20,10 @@ import com.example.newsletter.adapters.ListArticlesHandler
 import com.example.newsletter.data.ArticleRepository
 import com.example.newsletter.data.FavoritsLocal.FavoritsRepository
 import com.example.newsletter.fragment.DeveloppeurFragment
-import com.example.newsletter.fragment.FonctionFragment
+
+import com.example.newsletter.fragment.FunctionFragment
+import com.example.newsletter.fragment.LibrariesFragment
+
 import com.example.newsletter.fragment.PageAccueilFragment
 import com.example.newsletter.models.Article
 import kotlinx.android.synthetic.main.list_articles_fragment.view.*

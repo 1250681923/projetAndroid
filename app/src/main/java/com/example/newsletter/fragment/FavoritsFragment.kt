@@ -20,6 +20,10 @@ import com.example.newsletter.adapters.ListArticlesHandler
 import com.example.newsletter.data.ArticleRepository
 import com.example.newsletter.data.FavoritsLocal.FavoritsRepository
 import com.example.newsletter.fragment.DeveloppeurFragment
+
+import com.example.newsletter.fragment.FunctionFragment
+import com.example.newsletter.fragment.LibrariesFragment
+
 import com.example.newsletter.fragment.PageAccueilFragment
 import com.example.newsletter.models.Article
 import kotlinx.android.synthetic.main.list_articles_fragment.view.*
@@ -97,14 +101,18 @@ class FavoritsFragment: Fragment(), ListArticlesHandler{
         //Fonction
         if (id == R.id.page_4) {
             (activity as? NavigationListener)?.let {
-                it.changeFragment(PageAccueilFragment())
+
+                it.changeFragment(FunctionFragment())
+
             }
             return true
         }
         //library
         if (id == R.id.page_5) {
             (activity as? NavigationListener)?.let {
-                it.changeFragment(PageAccueilFragment())
+
+                it.changeFragment(LibrariesFragment())
+
             }
             return true
         }
