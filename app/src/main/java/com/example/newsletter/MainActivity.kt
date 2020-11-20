@@ -17,6 +17,9 @@ class MainActivity : AppCompatActivity(), NavigationListener{
     }
 
 
+
+
+
     override fun changeFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fragment_container, fragment)
