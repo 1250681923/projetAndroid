@@ -11,7 +11,7 @@ class LibrariesRepository {
         apiService = DummyLibrariesService()
     }
 
-    fun getNeighbours(): List<Librarie> = apiService.libraries
+    fun getlibraries(): List<Librarie> = apiService.libraries
 
     companion object {
         private var instance: LibrariesRepository? = null
