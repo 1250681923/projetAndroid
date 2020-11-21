@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.newsletter.MainActivity
+import com.example.newsletter.NavigationListener
 import com.example.newsletter.R
+import com.example.newsletter.fragment.pays.FavoritsFragment
 import com.example.newsletter.models.Article
 import kotlinx.coroutines.CoroutineScope
 
@@ -38,6 +40,15 @@ class ListArticlesAdapter(
 
         val context = holder.itemView
 
+        holder.title.setOnClickListener {
+            handler.seeDetails(article, context)
+        }
+        holder.content.setOnClickListener {
+            handler.seeDetails(article, context)
+        }
+        holder.image.setOnClickListener {
+            handler.seeDetails(article, context)
+        }
         Glide.with(context)
                 .load(article.urlToImage)
                 .apply(RequestOptions.circleCropTransform())
@@ -56,14 +67,11 @@ class ListArticlesAdapter(
             if (isArticleFav(article)){
                 holder.favorits.setBackgroundResource(R.drawable.ic_favorite_border_24)
                 handler.onRemoveFavArticle(article)
-                //Toast.makeText(handler,"retiré des favoris", Toast.LENGTH_SHORT).show()
             }
             else {
                 holder.favorits.setBackgroundResource(R.drawable.ic_favorite_round_24)
                 handler.onFavoritsArticle(article)
-                //Toast.makeText(handler,"ajouté aux favoris", Toast.LENGTH_SHORT).show()
             }
-            println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ${it}")
         }
 
     }

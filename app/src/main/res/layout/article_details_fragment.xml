@@ -28,11 +28,22 @@
                 android:layout_marginTop="10dp">
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/imageView"
                     android:layout_width="match_parent"
                     android:layout_height="106dp"
                     android:contentDescription="Avator"
                     app:srcCompat="@drawable/ic_launcher_background" />
+
+                <Button
+                    android:id="@+id/favorit"
+                    android:layout_width="25dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="300dp"
+                    android:layout_row="0"
+                    android:layout_column="3"
+                    android:background="@drawable/ic_favorite_border_24"
+                    android:gravity="bottom|end"
+                    app:backgroundTint="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -42,13 +53,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/nom"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/textview"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="nom"
-                    android:inputType="text" />
+                    android:layout_weight="1"
+                    android:text="TITLE: " />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -58,13 +76,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/image"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/textview1"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="URL Avatar"
-                    android:inputType="textUri" />
+                    android:layout_weight="1"
+                    android:text="AUTHOR: " />
+
+                <TextView
+                    android:id="@+id/author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -74,13 +98,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tele"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/textview2"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="telephone"
-                    android:inputType="phone" />
+                    android:layout_weight="1"
+                    android:text="URL: " />
+
+                <TextView
+                    android:id="@+id/URL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -90,13 +120,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/web"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/textview3"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="website"
-                    android:inputType="textUri" />
+                    android:layout_weight="1"
+                    android:text="DESCRIPTION: " />
+
+                <TextView
+                    android:id="@+id/Description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -106,13 +142,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/textview4"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="adresse"
-                    android:inputType="text" />
+                    android:layout_weight="1"
+                    android:text="CONTENT: " />
+
+                <TextView
+                    android:id="@+id/content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -121,22 +163,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp">
+                <TextView
+                    android:id="@+id/textview5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="PUBLISHED At: " />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/pro"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:ems="10"
-                    android:hint="A propos de moi"
-                    android:inputType="text|textMultiLine" />
+                <TextView
+                    android:id="@+id/publishedAt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/enre"
+                android:id="@+id/Back"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:enabled="false"
-                android:text="Enregistrer"
+                android:text="BACK"
                 android:layout_marginTop="10dp"/>
 
         </LinearLayout>
