@@ -36,6 +36,7 @@ class ListLibrariesAdapter(
 
 
         val library:Librarie = mLibrarie[position]
+        holder.librarieid.text= library.id.toString()
         holder.librarieName.text =library.librairie_name
         holder.librarieDiscrip.text = library.librairie_description
     }

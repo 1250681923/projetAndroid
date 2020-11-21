@@ -8,26 +8,30 @@
     android:focusable="true"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
 
     <TextView
         android:id="@+id/libid"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxWidth="250dp"
         android:maxLines="1"
         android:textStyle="bold"
+        android:textColor="#00ff00"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="id" />
+        tools:text="iddddd" />
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="341dp"
-        android:maxWidth="200dp"
-        android:maxLines="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/libid"
         app:layout_constraintEnd_toEndOf="@+id/libid"
@@ -37,18 +41,14 @@
         app:layout_constraintVertical_bias="0.0"
         tools:text="librarie name" />
 
-    <TextView
-        android:id="@+id/discription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="341dp"
-        android:maxWidth="250dp"
-        android:maxLines="10"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/name"
-        app:layout_constraintEnd_toEndOf="@+id/name"
-        app:layout_constraintStart_toStartOf="@+id/name"
-        app:layout_constraintTop_toTopOf="@+id/name"
-        tools:text="discription" />
+        <TextView
+            android:id="@+id/discription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxWidth="600dp"
+            android:maxLines="10"
+            android:textStyle="bold"
+            tools:text="discription" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
