@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_200">
+    android:background="@color/white">
 
     <!--    <TextView-->
     <!--        android:id="@+id/textView2"-->
@@ -96,55 +96,6 @@
 
 
 
-
-
-    <!--    <CheckBox-->
-    <!--        android:id="@+id/checkBox2"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginStart="20dp"-->
-    <!--        android:layout_marginTop="300dp"-->
-    <!--        android:layout_marginBottom="350dp"-->
-    <!--        android:text="Chine"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintStart_toEndOf="@+id/checkBox"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-    <!--    <CheckBox-->
-    <!--        android:id="@+id/checkBox3"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginStart="20dp"-->
-    <!--        android:layout_marginTop="300dp"-->
-    <!--        android:layout_marginBottom="350dp"-->
-    <!--        android:text="Etats Unis"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintStart_toEndOf="@+id/checkBox2"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-    <!--    <CheckBox-->
-    <!--        android:id="@+id/checkBox4"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginStart="20dp"-->
-    <!--        android:layout_marginTop="300dp"-->
-    <!--        android:layout_marginBottom="350dp"-->
-    <!--        android:text="Angleterre"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintStart_toEndOf="@+id/checkBox3"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"/>-->
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/textView2"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginStart="20dp"-->
-    <!--        android:layout_marginTop="300dp"-->
-    <!--        android:text="Choisissez le pays:"-->
-    <!--        android:textSize="16sp"-->
-    <!--        app:layout_constraintBottom_toTopOf="@id/checkBox"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <Button
         android:id="@+id/button"

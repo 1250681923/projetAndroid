@@ -119,16 +119,13 @@ class FavoritsFragment: Fragment(), ListArticlesHandler{
     override fun onFavoritsArticle(article: Article) {
         FavoritsRepository.getInstance().createFavorit(article)
     }
-
     override fun onRemoveFavArticle(article: Article) {
         FavoritsRepository.getInstance().remove(article)
         recyclerView.adapter?.notifyDataSetChanged()
     }
-
     override fun getListArticlesFav(): List<Article> {
         return FavoritsRepository.getInstance().getFavorit()
     }
-
     override fun seeDetails(article: Article, context: View) {
         (activity as? NavigationListener)?.let {
             it.changeFragment(ArticleDetailsInforFragment(article, context))

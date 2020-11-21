@@ -111,7 +111,5 @@ class ArticleFragment: Fragment(), ListArticlesHandler{
         TODO("Not yet implemented")
     }
 
-
-
 }
 

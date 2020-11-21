@@ -196,8 +196,6 @@ class FrArticleFragment: Fragment(), ListArticlesHandler{
     override fun getListArticlesFav(): List<Article> {
         return FavoritsRepository.getInstance().getFavorit()
     }
-
-
     override fun seeDetails(article: Article, context: View) {
         (activity as? NavigationListener)?.let {
             it.changeFragment(ArticleDetailsInforFragment(article, context))

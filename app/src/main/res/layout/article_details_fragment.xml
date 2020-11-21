@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,27 +12,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="0dp">
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/avatarLyt"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp">
-
                 <ImageView
                     android:id="@+id/imageView"
                     android:layout_width="match_parent"
                     android:layout_height="106dp"
                     android:contentDescription="Avator"
                     app:srcCompat="@drawable/ic_launcher_background" />
-
                 <Button
                     android:id="@+id/favorit"
                     android:layout_width="25dp"
@@ -45,44 +39,37 @@
                     android:gravity="bottom|end"
                     app:backgroundTint="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/nameLyt"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp">
-
                 <TextView
                     android:id="@+id/textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="TITLE: " />
-
                 <TextView
                     android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="TextView" />
-
             </com.google.android.material.textfield.TextInputLayout>
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/imageLyt"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp">
-
                 <TextView
                     android:id="@+id/textview1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="AUTHOR: " />
-
                 <TextView
                     android:id="@+id/author"
                     android:layout_width="wrap_content"
@@ -90,21 +77,18 @@
                     android:layout_weight="1"
                     android:text="TextView" />
             </com.google.android.material.textfield.TextInputLayout>
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/phoneLyt"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp">
-
                 <TextView
                     android:id="@+id/textview2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="URL: " />
-
                 <TextView
                     android:id="@+id/URL"
                     android:layout_width="wrap_content"
@@ -112,21 +96,18 @@
                     android:layout_weight="1"
                     android:text="TextView" />
             </com.google.android.material.textfield.TextInputLayout>
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/websiteLyt"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp">
-
                 <TextView
                     android:id="@+id/textview3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="DESCRIPTION: " />
-
                 <TextView
                     android:id="@+id/Description"
                     android:layout_width="wrap_content"
@@ -134,21 +115,18 @@
                     android:layout_weight="1"
                     android:text="TextView" />
             </com.google.android.material.textfield.TextInputLayout>
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/addressLyt"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp">
-
                 <TextView
                     android:id="@+id/textview4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="CONTENT: " />
-
                 <TextView
                     android:id="@+id/content"
                     android:layout_width="wrap_content"
@@ -156,7 +134,6 @@
                     android:layout_weight="1"
                     android:text="TextView" />
             </com.google.android.material.textfield.TextInputLayout>
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/aboutLyt"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -169,7 +146,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="PUBLISHED At: " />
-
                 <TextView
                     android:id="@+id/publishedAt"
                     android:layout_width="wrap_content"
@@ -177,14 +153,12 @@
                     android:layout_weight="1"
                     android:text="TextView" />
             </com.google.android.material.textfield.TextInputLayout>
-
             <Button
                 android:id="@+id/Back"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="BACK"
                 android:layout_marginTop="10dp"/>
-
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

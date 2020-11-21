@@ -62,7 +62,7 @@ class FunctionFragment: Fragment() {
         //library
         if (id == R.id.page_5) {
             (activity as? NavigationListener)?.let {
-                it.changeFragment(PageAccueilFragment())
+                it.changeFragment(LibrariesFragment())
             }
             return true
         }

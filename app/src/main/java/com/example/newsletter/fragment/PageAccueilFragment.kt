@@ -21,7 +21,7 @@ class PageAccueilFragment : Fragment(), RadioGroup.OnCheckedChangeListener{
     private lateinit var Et: RadioButton
     private lateinit var An: RadioButton
 
-    private lateinit var Fa: Button
+    private lateinit var Fa : Button
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -32,14 +32,14 @@ class PageAccueilFragment : Fragment(), RadioGroup.OnCheckedChangeListener{
 
         button = view.findViewById(R.id.button)
 
-        Fa = view.findViewById(R.id.buttonFavoris)
-
         li = view.findViewById(R.id.rg_lan)
 
         Fr = view.findViewById(R.id.Fr)
         Ch = view.findViewById(R.id.Ch)
         Et = view.findViewById(R.id.Et)
         An = view.findViewById(R.id.An)
+
+        Fa = view.findViewById(R.id.buttonFavoris)
 
         li.setOnCheckedChangeListener(this)
 
@@ -58,7 +58,7 @@ class PageAccueilFragment : Fragment(), RadioGroup.OnCheckedChangeListener{
 
         button.setOnClickListener {
             (activity as? NavigationListener)?.let {
-                if (Fr.isChecked)   it.changeFragment(FrArticleFragment())
+                if (Fr.isChecked)   it.changeFragment(FrArticleFragment( ))
                 if (Ch.isChecked)   it.changeFragment(ChArticleFragment())
                 if (Et.isChecked)   it.changeFragment(EtArticleFragment())
                 if (An.isChecked)   it.changeFragment(AnArticleFragement())

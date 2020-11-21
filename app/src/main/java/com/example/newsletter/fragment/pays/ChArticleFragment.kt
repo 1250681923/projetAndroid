@@ -109,24 +109,22 @@ class ChArticleFragment: Fragment(), ListArticlesHandler{
         menuInflater.inflate(R.menu.shr_toolbar_menu, menu)
         super.onCreateOptionsMenu(menu, menuInflater)
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here.
         val id = item.getItemId()
-
         if (id == R.id.page_1) {
             (activity as? NavigationListener)?.let {
                 it.changeFragment(PageAccueilFragment())
             }
             return true
         }
-
         if (id == R.id.page_2) {
             (activity as? NavigationListener)?.let {
                 it.changeFragment(FavoritsFragment())
             }
             return true
         }
-
         //developpeur
         if (id == R.id.page_3) {
             (activity as? NavigationListener)?.let {
@@ -182,16 +180,13 @@ class ChArticleFragment: Fragment(), ListArticlesHandler{
     override fun onFavoritsArticle(article: Article) {
         FavoritsRepository.getInstance().createFavorit(article)
     }
-
     override fun onRemoveFavArticle(article: Article) {
         FavoritsRepository.getInstance().remove(article)
         recyclerView.adapter?.notifyDataSetChanged()
     }
-
     override fun getListArticlesFav(): List<Article> {
         return FavoritsRepository.getInstance().getFavorit()
     }
-
     override fun seeDetails(article: Article, context: View) {
         (activity as? NavigationListener)?.let {
             it.changeFragment(ArticleDetailsInforFragment(article, context))
