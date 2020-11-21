@@ -10,10 +10,7 @@ import android.widget.RadioGroup
 import androidx.fragment.app.Fragment
 import com.example.newsletter.NavigationListener
 import com.example.newsletter.R
-import com.example.newsletter.fragment.pays.AnArticleFragement
-import com.example.newsletter.fragment.pays.ChArticleFragment
-import com.example.newsletter.fragment.pays.EtArticleFragment
-import com.example.newsletter.fragment.pays.FrArticleFragment
+import com.example.newsletter.fragment.pays.*
 
 
 class PageAccueilFragment : Fragment(), RadioGroup.OnCheckedChangeListener{
@@ -24,6 +21,7 @@ class PageAccueilFragment : Fragment(), RadioGroup.OnCheckedChangeListener{
     private lateinit var Et: RadioButton
     private lateinit var An: RadioButton
 
+    private lateinit var Fa : Button
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -41,6 +39,8 @@ class PageAccueilFragment : Fragment(), RadioGroup.OnCheckedChangeListener{
         Et = view.findViewById(R.id.Et)
         An = view.findViewById(R.id.An)
 
+        Fa = view.findViewById(R.id.buttonFavoris)
+
         li.setOnCheckedChangeListener(this)
 
 
@@ -49,6 +49,12 @@ class PageAccueilFragment : Fragment(), RadioGroup.OnCheckedChangeListener{
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        Fa.setOnClickListener {
+            (activity as? NavigationListener)?.let {
+                it.changeFragment(FavoritsFragment())
+            }
+        }
 
         button.setOnClickListener {
             (activity as? NavigationListener)?.let {

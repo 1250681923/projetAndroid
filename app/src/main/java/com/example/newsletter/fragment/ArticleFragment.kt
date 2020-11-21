@@ -107,5 +107,9 @@ class ArticleFragment: Fragment(), ListArticlesHandler{
         TODO("Not yet implemented")
     }
 
+    override fun seeDetails(article: Article, context: View) {
+        TODO("Not yet implemented")
+    }
+
 }
 

@@ -9,7 +9,7 @@ class FavoritsRepository {
         apiService = DummyFavoritsApiService()
     }
 
-    fun getNeighbours(): List<Article> = apiService.articles
+    fun getFavorit(): List<Article> = apiService.articles
 
     fun remove(article: Article) = apiService.deleteFavorit(article)
 

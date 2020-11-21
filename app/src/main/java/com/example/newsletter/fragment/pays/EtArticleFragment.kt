@@ -20,10 +20,7 @@ import com.example.newsletter.adapters.ListArticlesAdapter
 import com.example.newsletter.adapters.ListArticlesHandler
 import com.example.newsletter.data.ArticleRepository
 import com.example.newsletter.data.FavoritsLocal.FavoritsRepository
-import com.example.newsletter.fragment.DeveloppeurFragment
-import com.example.newsletter.fragment.FunctionFragment
-import com.example.newsletter.fragment.LibrariesFragment
-import com.example.newsletter.fragment.PageAccueilFragment
+import com.example.newsletter.fragment.*
 import com.example.newsletter.models.Article
 import kotlinx.android.synthetic.main.list_articles_fragment.view.*
 import kotlinx.coroutines.Dispatchers
@@ -184,14 +181,17 @@ class EtArticleFragment: Fragment(), ListArticlesHandler{
     override fun onFavoritsArticle(article: Article) {
         FavoritsRepository.getInstance().createFavorit(article)
     }
-
     override fun onRemoveFavArticle(article: Article) {
         FavoritsRepository.getInstance().remove(article)
         recyclerView.adapter?.notifyDataSetChanged()
     }
-
     override fun getListArticlesFav(): List<Article> {
-        return FavoritsRepository.getInstance().getNeighbours()
+        return FavoritsRepository.getInstance().getFavorit()
+    }
+    override fun seeDetails(article: Article, context: View) {
+        (activity as? NavigationListener)?.let {
+            it.changeFragment(ArticleDetailsInforFragment(article, context))
+        }
     }
 
 }

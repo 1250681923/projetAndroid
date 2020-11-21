@@ -22,30 +22,32 @@ class ListArticlesAdapter(
     val handler: ListArticlesHandler
 ) : RecyclerView.Adapter<ListArticlesAdapter.ViewHolder>() {
     private val mArticle: List<Article> = items
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(parent.context)
-                .inflate(R.layout.article_item, parent, false)
-
+            .inflate(R.layout.article_item, parent, false)
         return ViewHolder(view)
     }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val article: Article = mArticle[position]
-
         holder.title.text = article.title
         holder.content.text = article.content
-
         val context = holder.itemView
-
+        holder.title.setOnClickListener {
+            handler.seeDetails(article, context)
+        }
+        holder.content.setOnClickListener {
+            handler.seeDetails(article, context)
+        }
+        holder.image.setOnClickListener {
+            handler.seeDetails(article, context)
+        }
         Glide.with(context)
-                .load(article.urlToImage)
-                .apply(RequestOptions.circleCropTransform())
-                .placeholder(R.drawable.ic_launcher_background)
-                .error(R.drawable.ic_launcher_background)
-                .skipMemoryCache(false)
-                .into(holder.image)
-
+            .load(article.urlToImage)
+            .apply(RequestOptions.circleCropTransform())
+            .placeholder(R.drawable.ic_launcher_background)
+            .error(R.drawable.ic_launcher_background)
+            .skipMemoryCache(false)
+            .into(holder.image)
         if (isArticleFav(article)){
             holder.favorits.setBackgroundResource(R.drawable.ic_favorite_round_24)
         }
@@ -56,37 +58,28 @@ class ListArticlesAdapter(
             if (isArticleFav(article)){
                 holder.favorits.setBackgroundResource(R.drawable.ic_favorite_border_24)
                 handler.onRemoveFavArticle(article)
-                //Toast.makeText(handler,"retiré des favoris", Toast.LENGTH_SHORT).show()
             }
             else {
                 holder.favorits.setBackgroundResource(R.drawable.ic_favorite_round_24)
                 handler.onFavoritsArticle(article)
-                //Toast.makeText(handler,"ajouté aux favoris", Toast.LENGTH_SHORT).show()
             }
-            println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ${it}")
         }
-
     }
-
     fun isArticleFav(article: Article):Boolean{
         for (item: Article in handler.getListArticlesFav()){
             if (item.url == article.url) return true
-
         }
         return false
-
     }
-
     override fun getItemCount(): Int {
         return mArticle.size
     }
-
     class ViewHolder(view: View) :
-            RecyclerView.ViewHolder(view) {
-            val title: TextView
-            val content: TextView
-            val image: ImageView
-            val favorits: Button
+        RecyclerView.ViewHolder(view) {
+        val title: TextView
+        val content: TextView
+        val image: ImageView
+        val favorits: Button
         init {
             title = view.findViewById(R.id.title)
             content = view.findViewById(R.id.content)
@@ -94,5 +87,4 @@ class ListArticlesAdapter(
             favorits = view.findViewById(R.id.btn_favoris)
         }
     }
-
 }
