@@ -26,9 +26,6 @@ class ArticleFragment: Fragment(), ListArticlesHandler{
 
     private lateinit var recyclerView: RecyclerView
 
-
-
-
     /**
      * Fonction permettant de définir une vue à attacher à un fragment
      */
