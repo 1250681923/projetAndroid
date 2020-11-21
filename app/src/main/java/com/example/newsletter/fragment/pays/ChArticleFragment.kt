@@ -14,10 +14,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsletter.MainActivity
 import com.example.newsletter.NavigationIconClickListener
+import com.example.newsletter.NavigationListener
 import com.example.newsletter.R
 import com.example.newsletter.adapters.ListArticlesAdapter
 import com.example.newsletter.adapters.ListArticlesHandler
 import com.example.newsletter.data.ArticleRepository
+import com.example.newsletter.data.FavoritsLocal.FavoritsRepository
+import com.example.newsletter.fragment.*
 import com.example.newsletter.models.Article
 import kotlinx.android.synthetic.main.list_articles_fragment.view.*
 import kotlinx.coroutines.Dispatchers
@@ -107,6 +110,44 @@ class ChArticleFragment: Fragment(), ListArticlesHandler{
         super.onCreateOptionsMenu(menu, menuInflater)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle action bar item clicks here.
+        val id = item.getItemId()
+        if (id == R.id.page_1) {
+            (activity as? NavigationListener)?.let {
+                it.changeFragment(PageAccueilFragment())
+            }
+            return true
+        }
+        if (id == R.id.page_2) {
+            (activity as? NavigationListener)?.let {
+                it.changeFragment(FavoritsFragment())
+            }
+            return true
+        }
+        //developpeur
+        if (id == R.id.page_3) {
+            (activity as? NavigationListener)?.let {
+                it.changeFragment(DeveloppeurFragment())
+            }
+            return true
+        }
+        //Fonction
+        if (id == R.id.page_4) {
+            (activity as? NavigationListener)?.let {
+                it.changeFragment(FunctionFragment())
+            }
+            return true
+        }
+        //library
+        if (id == R.id.page_5) {
+            (activity as? NavigationListener)?.let {
+                it.changeFragment(LibrariesFragment())
+            }
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
     /**
      * Récupère la liste des articles dans un thread secondaire
      */
@@ -137,15 +178,19 @@ class ChArticleFragment: Fragment(), ListArticlesHandler{
     }
 
     override fun onFavoritsArticle(article: Article) {
-        TODO("Not yet implemented")
+        FavoritsRepository.getInstance().createFavorit(article)
     }
-
     override fun onRemoveFavArticle(article: Article) {
-        TODO("Not yet implemented")
+        FavoritsRepository.getInstance().remove(article)
+        recyclerView.adapter?.notifyDataSetChanged()
     }
-
     override fun getListArticlesFav(): List<Article> {
-        TODO("Not yet implemented")
+        return FavoritsRepository.getInstance().getFavorit()
+    }
+    override fun seeDetails(article: Article, context: View) {
+        (activity as? NavigationListener)?.let {
+            it.changeFragment(ArticleDetailsInforFragment(article, context))
+        }
     }
 
 }
